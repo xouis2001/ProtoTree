@@ -1,6 +1,6 @@
 # ProtoTree
 
-![ProtoTree overview](docs/showcase/prototree-overview.png)
+![ProtoTree product home](docs/showcase/prototree-product-home.png)
 
 ProtoTree is a laboratory protocol sharing system with a FastAPI backend and a Vite/React frontend.
 
@@ -8,6 +8,7 @@ ProtoTree is a laboratory protocol sharing system with a FastAPI backend and a V
 
 Promotional screenshots with anonymized sample data are available in [`docs/showcase`](docs/showcase):
 
+- [Product home screenshot](docs/showcase/prototree-product-home.png)
 - [Overview dashboard](docs/showcase/prototree-overview.png)
 - [Protocol library search](docs/showcase/prototree-library.png)
 - [AI-assisted upload editor](docs/showcase/prototree-editor.png)
