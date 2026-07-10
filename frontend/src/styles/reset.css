@@ -1,0 +1,83 @@
+/* ====================================================================
+   Reset — Global resets and base typography
+   ==================================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+/* Hover lift on interactive items */
+button:not(:disabled),
+.protocol-item:not(:disabled),
+.profile-protocol-item:not(:disabled),
+.library-result-item:not(:disabled) {
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+button:not(:disabled):hover,
+.protocol-item:not(:disabled):hover,
+.profile-protocol-item:not(:disabled):hover,
+.library-result-item:not(:disabled):hover {
+  transform: translateY(-1px);
+}
+
+/* Base heading reset */
+h1, h2, h3, p {
+  margin-top: 0;
+}
+
+/* Table reset */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border-bottom: 1px solid var(--color-border);
+  padding: 14px 10px;
+  text-align: left;
+}
+
+/* Utility classes */
+.muted,
+.empty {
+  color: var(--color-text-muted);
+}
+
+.eyebrow {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-extrabold);
+  margin: 0 0 8px;
+}
+
+.hidden-file-input {
+  display: none;
+}
+
+.button-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}

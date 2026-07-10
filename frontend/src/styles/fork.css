@@ -1,0 +1,192 @@
+/* ====================================================================
+   Fork — Fork page specific
+   ==================================================================== */
+
+.fork-library-page {
+  gap: var(--gap-6xl);
+}
+
+.fork-library-hero {
+  display: flex;
+  gap: var(--gap-4xl);
+  align-items: flex-start;
+  justify-content: space-between;
+  background: linear-gradient(135deg, var(--color-bg-card), var(--color-primary-50));
+}
+
+.fork-library-hero h2 {
+  margin: 4px 0 var(--gap-md);
+}
+
+.fork-stage-steps,
+.fork-editor-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-lg);
+  align-items: center;
+}
+
+.fork-editor-actions {
+  justify-content: flex-end;
+}
+
+.fork-stage-steps span {
+  border-radius: var(--radius-pill);
+  padding: 8px var(--gap-2xl);
+  color: var(--color-text-muted);
+  background: var(--color-bg-muted);
+  font-size: 13px;
+  font-weight: var(--font-weight-black);
+}
+
+.fork-stage-steps span.active {
+  color: var(--color-primary-dark);
+  background: var(--color-primary-100);
+}
+
+/* --- Source stage --- */
+.fork-source-stage-card {
+  max-width: 1120px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.fork-stage-hero {
+  display: flex;
+  gap: var(--gap-4xl);
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: var(--gap-3xl);
+  border: 1px solid var(--color-primary-100);
+  border-radius: 24px;
+  background: linear-gradient(135deg, var(--color-bg-card), var(--color-primary-50));
+}
+
+.fork-stage-hero h2 {
+  margin: 4px 0 var(--gap-md);
+}
+
+.fork-stage-hero p {
+  margin: 0;
+}
+
+/* --- Fork modern form --- */
+.fork-modern-form {
+  gap: var(--gap-4xl);
+}
+
+.fork-editor-hero {
+  display: flex;
+  gap: var(--gap-4xl);
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: var(--gap-3xl);
+  border: 1px solid var(--color-primary-100);
+  border-radius: 24px;
+  background: linear-gradient(135deg, var(--color-bg-card), var(--color-primary-50));
+}
+
+.fork-editor-hero h2 {
+  margin: 4px 0 var(--gap-md);
+}
+
+/* --- Fork source summary --- */
+.fork-source-summary {
+  display: grid;
+  gap: var(--gap-md);
+  min-width: 120px;
+  padding: var(--gap-2xl);
+  border-radius: var(--radius-xl);
+  color: var(--color-primary-dark);
+  background: var(--color-primary-50);
+  text-align: center;
+}
+
+.fork-source-summary span {
+  color: var(--color-text-muted);
+  font-size: 12px;
+  font-weight: var(--font-weight-extrabold);
+}
+
+/* --- Fork basic section --- */
+.fork-basic-section {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* --- Fork rich editor field --- */
+.fork-rich-editor-field {
+  display: grid;
+  gap: var(--gap-xl);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-black);
+}
+
+/* --- Fork submit row --- */
+.fork-submit-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-2xl);
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--gap-3xl);
+  border: 1px solid var(--color-primary-100);
+  border-radius: 20px;
+  background: var(--color-primary-50);
+}
+
+.fork-submit-row span {
+  color: var(--color-primary-darker);
+  font-weight: var(--font-weight-extrabold);
+}
+
+/* --- Fork form panel --- */
+.fork-form-panel {
+  align-content: start;
+}
+
+.fork-form-section {
+  display: grid;
+  gap: var(--gap-3xl);
+  padding: var(--gap-3xl);
+  border: 1px solid var(--color-primary-100);
+  border-radius: var(--radius-card);
+  background: linear-gradient(135deg, var(--color-bg-card), var(--color-primary-50));
+}
+
+/* --- Fork meta / type grids --- */
+.fork-meta-grid,
+.fork-type-grid {
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--gap-3xl);
+  padding: var(--gap-3xl);
+  border-color: var(--color-primary-100);
+  background: var(--color-primary-50);
+}
+
+/* --- Fork step header --- */
+.fork-step-header {
+  display: flex;
+  gap: var(--gap-2xl);
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--gap-2xl);
+  border: 1px solid var(--color-primary-100);
+  border-radius: var(--radius-card);
+  background: var(--color-primary-50);
+}
+
+.fork-step-header h3,
+.fork-step-header p {
+  margin: 0;
+}
+
+/* --- Fork raw text --- */
+.fork-raw-text {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* --- Fork step list --- */
+.fork-step-list {
+  gap: var(--gap-2xl);
+}

@@ -1,0 +1,29 @@
+<svg width="720" height="220" viewBox="0 0 720 220" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ProtoTree">
+  <rect width="720" height="220" rx="32" fill="#F8FAFC"/>
+  <g transform="translate(34 28) scale(0.64)">
+    <rect width="256" height="256" rx="56" fill="#F8FAFC"/>
+    <rect x="46" y="54" width="80" height="108" rx="18" fill="#FFFFFF" stroke="#0F2A66" stroke-width="10"/>
+    <path d="M105 54V82C105 91.9411 113.059 100 123 100H126" stroke="#0F2A66" stroke-width="10" stroke-linecap="round"/>
+    <path d="M68 92H96M68 116H104M68 140H94" stroke="#10AFA5" stroke-width="10" stroke-linecap="round"/>
+    <path d="M126 146C150 146 169 127 169 103" stroke="#0F2A66" stroke-width="12" stroke-linecap="round"/>
+    <path d="M169 103V72" stroke="#0F2A66" stroke-width="12" stroke-linecap="round"/>
+    <path d="M169 103C145 103 128 86 128 64" stroke="#0F2A66" stroke-width="12" stroke-linecap="round"/>
+    <path d="M169 103C193 103 210 86 210 64" stroke="#0F2A66" stroke-width="12" stroke-linecap="round"/>
+    <path d="M169 103C190 103 206 119 206 140" stroke="#0F2A66" stroke-width="12" stroke-linecap="round"/>
+    <path d="M169 103C150 103 135 118 135 137" stroke="#0F2A66" stroke-width="12" stroke-linecap="round"/>
+    <circle cx="128" cy="64" r="14" fill="#10AFA5"/>
+    <circle cx="169" cy="72" r="14" fill="#10AFA5"/>
+    <circle cx="210" cy="64" r="14" fill="#F59E0B"/>
+    <circle cx="206" cy="140" r="14" fill="#10AFA5"/>
+    <circle cx="135" cy="137" r="14" fill="#F59E0B"/>
+    <circle cx="169" cy="103" r="13" fill="#FFFFFF" stroke="#0F2A66" stroke-width="8"/>
+    <path d="M84 176H174" stroke="#0F2A66" stroke-width="12" stroke-linecap="round"/>
+    <path d="M104 198H154" stroke="#10AFA5" stroke-width="12" stroke-linecap="round"/>
+    <path d="M118 220H140" stroke="#0F2A66" stroke-width="12" stroke-linecap="round"/>
+  </g>
+  <text x="226" y="104" fill="#0F2A66" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="70" font-weight="850" letter-spacing="-1">Proto</text>
+  <text x="410" y="104" fill="#10AFA5" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="70" font-weight="850" letter-spacing="-1">Tree</text>
+  <text x="231" y="148" fill="#64748B" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="23" font-weight="700" letter-spacing="2.6">PROTOCOL KNOWLEDGE BASE</text>
+  <path d="M231 170H605" stroke="#D7E3F0" stroke-width="4" stroke-linecap="round"/>
+  <path d="M231 170H389" stroke="#10AFA5" stroke-width="4" stroke-linecap="round"/>
+</svg>

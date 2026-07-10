@@ -1,0 +1,241 @@
+/* ====================================================================
+   Layout — App shell, sidebar, navigation
+   ==================================================================== */
+
+.app-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  align-items: start;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  min-height: 100vh;
+  max-height: 100vh;
+  background: var(--color-sidebar-bg);
+  color: var(--color-text-inverse);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-5xl);
+  overflow-y: auto;
+}
+
+.sidebar-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap-lg);
+}
+
+.mobile-nav-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--color-sidebar-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-text-inverse);
+  background: var(--color-sidebar-surface);
+  place-items: center;
+}
+
+/* --- Brand --- */
+.sidebar-brand {
+  display: flex;
+  gap: var(--gap-lg);
+  align-items: center;
+}
+
+/* --- Logo wrapper (rounded mask over square PNG) --- */
+.sidebar-logo-wrap {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-bg-card);
+  box-shadow: var(--shadow-logo);
+  display: grid;
+  place-items: center;
+}
+
+.sidebar-logo {
+  width: 92%;
+  height: 92%;
+  display: block;
+  object-fit: contain;
+  border-radius: var(--radius-lg);
+}
+
+.sidebar-brand-text h1 {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.25;
+  font-weight: var(--font-weight-extrabold);
+  letter-spacing: -0.01em;
+}
+
+.sidebar-brand-text span {
+  color: var(--color-sidebar-muted);
+  font-size: 12px;
+}
+
+/* --- User card --- */
+.sidebar-user {
+  display: flex;
+  gap: var(--gap-base);
+  align-items: center;
+  padding: 16px;
+  border: 1px solid var(--color-sidebar-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-sidebar-surface);
+}
+
+.sidebar-user-info {
+  display: grid;
+  gap: var(--gap-sm);
+}
+
+.sidebar-user-info strong {
+  color: var(--color-text-inverse);
+  font-size: 14px;
+}
+
+.sidebar-user-info span {
+  color: var(--color-sidebar-text-accent);
+  font-size: 12px;
+  font-weight: var(--font-weight-bold);
+}
+
+/* --- User box (legacy, shared) --- */
+.user-box {
+  display: grid;
+  gap: 6px;
+  padding: 16px;
+  border: 1px solid var(--color-sidebar-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-sidebar-surface);
+}
+
+.user-box span {
+  color: var(--color-text-subtle);
+}
+
+.user-box-with-avatar,
+.protocol-title-row,
+.profile-user-row,
+.author-with-avatar {
+  display: flex;
+  gap: var(--gap-base);
+  align-items: center;
+}
+
+/* --- Sections --- */
+.sidebar-section {
+  display: grid;
+  gap: var(--gap-md);
+}
+
+.sidebar-section-title {
+  margin: 0;
+  color: var(--color-sidebar-text-dim);
+  font-size: 11px;
+  font-weight: var(--font-weight-extrabold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* --- Navigation --- */
+.side-nav {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4px;
+  padding: 6px;
+  border-radius: var(--radius-lg);
+  background: var(--color-sidebar-surface);
+}
+
+.side-nav a {
+  border: 0;
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+  color: var(--color-sidebar-text);
+  background: transparent;
+  font-size: 14px;
+  font-weight: var(--font-weight-extrabold);
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.side-nav a:hover {
+  color: var(--color-text-inverse);
+  background: var(--color-sidebar-hover);
+}
+
+.side-nav a.active {
+  color: var(--color-sidebar-bg);
+  background: var(--color-text-inverse);
+}
+
+/* --- Sidebar search --- */
+.sidebar .search {
+  border-color: var(--color-sidebar-border);
+  color: var(--color-text-inverse);
+  background: var(--color-sidebar-surface);
+}
+
+.sidebar .search option {
+  color: var(--color-text-primary);
+  background: var(--color-bg-card);
+}
+
+/* --- Filter hint (sidebar) --- */
+.filter-hint {
+  margin: -8px 0 0;
+  color: var(--color-primary-300);
+  font-size: 13px;
+  font-weight: var(--font-weight-bold);
+}
+
+/* --- Nav icon in sidebar --- */
+.side-nav a svg {
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.side-nav a:hover svg,
+.side-nav a.active svg {
+  opacity: 1;
+}
+
+/* --- Ghost button with icon --- */
+.ghost {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Shared Lu Lab root navigation inside ProtoTree */
+.lulab-site-nav{position:sticky;top:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 22px;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(26,92,107,.12);box-shadow:0 8px 24px rgba(26,92,107,.08);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;}
+.lulab-site-nav .nav-links{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.lulab-site-nav .nav-links a{padding:7px 16px;border-radius:999px;text-decoration:none;font-size:14px;font-weight:700;color:#1a5c6b;border:1px solid #d0e8ec;background:rgba(255,255,255,.72);transition:all .18s ease;line-height:1.2;white-space:nowrap;}
+.lulab-site-nav .nav-links a:hover{background:#1a5c6b;color:#fff;border-color:#1a5c6b;transform:translateY(-1px);}
+.lulab-site-nav .nav-links a.active{background:#1a5c6b;color:#fff;border-color:#1a5c6b;box-shadow:0 5px 14px rgba(26,92,107,.18);}
+.lulab-auth-area{margin-left:auto;display:flex;align-items:center;gap:10px;min-height:38px;}
+.lulab-user-chip{display:flex;align-items:center;gap:10px;padding:4px 6px 4px 4px;border-radius:999px;background:#f5fbfc;border:1px solid #d0e8ec;color:#1a5c6b;}
+.lulab-avatar{width:34px;height:34px;border-radius:50%;overflow:hidden;display:grid;place-items:center;background:#fff;color:#1a5c6b;font-weight:800;text-decoration:none;border:1px solid rgba(26,92,107,.16);box-shadow:0 2px 8px rgba(26,92,107,.12);line-height:1;}
+.lulab-avatar .avatar{width:100%;height:100%;border-radius:50%;box-shadow:none;border:0;}
+.lulab-avatar img,.lulab-avatar svg{width:100%;height:100%;display:block;border-radius:50%;object-fit:cover;}
+.lulab-user-name{max-width:132px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px;font-weight:800;color:#1a5c6b;}
+.lulab-logout{border:0;border-radius:999px;padding:7px 12px;background:#eaf6f8;color:#1a5c6b;font-size:13px;font-weight:800;cursor:pointer;transition:all .18s ease;}
+.lulab-logout:hover{background:#1a5c6b;color:#fff;}
+@media(max-width:760px){.lulab-site-nav{align-items:flex-start;flex-direction:column;padding:10px 12px;gap:10px}.lulab-site-nav .nav-links{gap:6px}.lulab-site-nav .nav-links a{font-size:12px;padding:5px 10px}.lulab-auth-area{width:100%;justify-content:flex-end}.lulab-user-name{max-width:110px}}
+
+.lulab-profile-link{display:flex;align-items:center;gap:10px;border-radius:999px;text-decoration:none;color:#1a5c6b;padding:0 6px 0 0;transition:all .18s ease;}
+.lulab-profile-link:hover{background:#eaf6f8;transform:translateY(-1px);}

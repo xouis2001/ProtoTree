@@ -1,0 +1,273 @@
+/* ====================================================================
+   Resource — Data Processing Resources page
+   ==================================================================== */
+
+/* --- Resource hero card --- */
+.resource-hero-card {
+  display: flex;
+  gap: var(--gap-3xl);
+  align-items: flex-end;
+  justify-content: space-between;
+  background: linear-gradient(135deg, var(--color-bg-card), var(--color-primary-50));
+}
+
+.resource-hero-stats,
+.resource-form-footer,
+.tool-download-row,
+.resource-panel-actions,
+.resource-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-base);
+  align-items: center;
+}
+
+.resource-hero-stats span {
+  border-radius: var(--radius-pill);
+  padding: 8px var(--gap-2xl);
+  color: var(--color-primary-dark);
+  background: var(--color-primary-50);
+  font-weight: var(--font-weight-black);
+}
+
+/* --- Resource grid --- */
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gap-3xl);
+}
+
+/* --- Resource panel --- */
+.resource-panel {
+  align-content: start;
+}
+
+.resource-panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--gap-xl);
+}
+
+.resource-panel-actions,
+.resource-card-actions {
+  justify-content: flex-end;
+}
+
+/* --- Resource title group --- */
+.resource-title-group {
+  display: flex;
+  gap: var(--gap-lg);
+  align-items: flex-start;
+}
+
+.resource-title-group h3 {
+  margin: 2px 0 4px;
+}
+
+.resource-title-group small,
+.resource-form-footer span,
+.resource-file-field span {
+  color: var(--color-text-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* --- Resource icon --- */
+.resource-icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 16px;
+  color: var(--color-text-inverse);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent-purple));
+  font-size: 20px;
+  font-weight: var(--font-weight-black);
+  box-shadow: var(--shadow-icon);
+}
+
+/* --- Panel action chips --- */
+.resource-panel-actions > span,
+.resource-panel-header > span,
+.resource-item-header em {
+  border-radius: var(--radius-pill);
+  padding: 6px 10px;
+  color: var(--color-primary-dark);
+  background: var(--color-primary-50);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: var(--font-weight-black);
+  white-space: nowrap;
+}
+
+/* --- Resource form card --- */
+.resource-form-card {
+  padding: var(--gap-xl);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  background: var(--color-bg-surface);
+}
+
+.resource-form-title {
+  display: grid;
+  gap: 4px;
+  padding-bottom: 4px;
+}
+
+.resource-form-title span {
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+/* --- Featured resource list --- */
+.featured-resource-list {
+  gap: var(--gap-2xl);
+}
+
+/* --- Compact button --- */
+.compact-button {
+  padding: 8px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+}
+
+/* --- Resource form inputs --- */
+.resource-form label {
+  display: grid;
+  gap: 7px;
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-black);
+}
+
+.resource-form-two-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gap-xl);
+}
+
+.resource-form input,
+.resource-form textarea {
+  border: 1px solid var(--color-primary-100);
+  background: var(--color-bg-card);
+}
+
+.resource-form textarea {
+  min-height: 96px;
+}
+
+.resource-form .code-input {
+  min-height: 220px;
+  font-family: 'JetBrains Mono', 'Cascadia Code', Consolas, monospace;
+}
+
+.resource-form-footer {
+  justify-content: space-between;
+}
+
+/* --- Resource file field --- */
+.resource-file-field {
+  padding: var(--gap-xl);
+  border: 1px dashed var(--color-border-dashed);
+  border-radius: 16px;
+  background: var(--color-bg-card);
+}
+
+/* --- Resource item --- */
+.resource-item {
+  display: grid;
+  gap: 10px;
+  padding: var(--gap-2xl);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  background: var(--color-bg-card);
+  box-shadow: var(--shadow-md);
+}
+
+.resource-item-header {
+  display: flex;
+  gap: var(--gap-lg);
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.resource-item-header > div {
+  display: grid;
+  gap: 4px;
+}
+
+.resource-item strong {
+  color: var(--color-sidebar-bg);
+}
+
+.resource-item span,
+.tool-download-row span,
+.resource-empty-state span {
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+.resource-item p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.resource-item pre {
+  max-height: 260px;
+  overflow: auto;
+  margin: 0;
+  padding: var(--gap-xl);
+  border-radius: var(--radius-lg);
+  color: var(--color-primary-100);
+  background: var(--color-sidebar-bg);
+  white-space: pre-wrap;
+}
+
+/* --- Resource empty state --- */
+.resource-empty-state {
+  display: grid;
+  gap: 6px;
+  padding: var(--gap-3xl);
+  border: 1px dashed var(--color-border-dashed);
+  border-radius: 20px;
+  color: var(--color-primary-darker);
+  background: var(--color-primary-50);
+  text-align: center;
+}
+
+/* --- Tool download row --- */
+.tool-download-row {
+  justify-content: space-between;
+  padding-top: 4px;
+}
+
+.download-link {
+  width: fit-content;
+}
+
+.agent-skill-panel {
+  display: grid;
+  gap: var(--gap-2xl);
+}
+
+.agent-skill-source {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-md);
+}
+
+.agent-skill-source span {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  padding: 8px var(--gap-lg);
+  border-radius: var(--radius-pill);
+  color: var(--color-text-secondary);
+  background: var(--color-primary-50);
+  font-size: 13px;
+}
+
+.agent-skill-source strong {
+  color: var(--color-primary-dark);
+}

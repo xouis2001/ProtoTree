@@ -1,0 +1,155 @@
+/* ====================================================================
+   Detail — Protocol detail page specific
+   ==================================================================== */
+
+/* --- Lineage card --- */
+.lineage-card {
+  gap: var(--gap-2xl);
+}
+
+.lineage-flow {
+  display: flex;
+  gap: var(--gap-lg);
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+.lineage-segment {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-lg);
+  flex: 0 0 auto;
+}
+
+.lineage-arrow {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-black);
+}
+
+.lineage-node {
+  min-width: 220px;
+  max-width: 280px;
+  display: grid;
+  gap: var(--gap-md);
+  border: 1px solid var(--color-border-dashed);
+  border-radius: 20px;
+  padding: var(--gap-xl);
+  background: linear-gradient(135deg, var(--color-primary-50), var(--color-bg-card));
+  color: var(--color-sidebar-bg);
+  text-align: left;
+}
+
+.lineage-node.active {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-primary);
+}
+
+.lineage-node small {
+  color: var(--color-text-muted);
+}
+
+/* --- Step comment form --- */
+.step-comment-form {
+  margin-top: var(--gap-lg);
+}
+
+/* --- Fork candidate (detail page) --- */
+.fork-candidate {
+  width: 100%;
+  display: grid;
+  gap: 6px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 13px var(--gap-xl);
+  color: var(--color-text-primary);
+  background: var(--color-bg-card);
+  text-align: left;
+}
+
+.fork-candidate span {
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+/* --- Fork source panel (detail page) --- */
+.fork-source-panel {
+  position: static;
+  max-height: calc(100vh - 140px);
+  overflow-y: auto;
+}
+
+.fork-source-panel .library-control-inner {
+  display: grid;
+  gap: var(--gap-xl);
+}
+
+.fork-source-results {
+  max-height: 420px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.fork-source-panel .library-result-item {
+  grid-template-columns: 1fr;
+}
+
+.fork-source-panel .library-result-meta {
+  gap: var(--gap-md);
+}
+
+.fork-candidate-item {
+  width: 100%;
+  display: grid;
+  gap: 6px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 13px var(--gap-xl);
+  color: var(--color-text-primary);
+  background: var(--color-bg-card);
+  text-align: left;
+}
+
+.fork-candidate-item span {
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+.fork-candidate-item.active {
+  border-color: var(--color-primary);
+  background: var(--color-primary-100);
+}
+
+/* --- Path picker row --- */
+.path-picker-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--gap-base);
+  align-items: start;
+}
+
+.path-picker-row textarea {
+  min-height: 120px;
+}
+
+/* --- Fork meta grid edit-row four --- */
+.fork-meta-grid.edit-row.four {
+  grid-template-columns: minmax(140px, 0.8fr) minmax(120px, 0.6fr) minmax(220px, 1.1fr);
+}
+
+/* --- Simple step editor --- */
+.simple-step-editor {
+  grid-template-columns: 72px minmax(120px, 0.42fr) 14px minmax(420px, 1.58fr) auto;
+  align-items: start;
+}
+
+/* --- Protocol item (legacy sidebar protocol list) --- */
+.protocol-item.active span,
+.protocol-item.active em,
+.protocol-item:hover span,
+.protocol-item:hover em {
+  color: var(--color-text-secondary);
+}
+
+.protocol-item em {
+  font-style: normal;
+}

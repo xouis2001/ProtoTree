@@ -1,0 +1,50 @@
+services:
+  db:
+    image: postgres:15
+    container_name: prototree-db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-prototree}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-prototree}
+      POSTGRES_DB: ${POSTGRES_DB:-prototree}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-prototree}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: ./backend
+    container_name: prototree-backend
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-prototree}:${POSTGRES_PASSWORD:-prototree}@db:5432/${POSTGRES_DB:-prototree}
+      JWT_SECRET: ${JWT_SECRET:-change-me-in-prod}
+      AI_PROVIDER: ${AI_PROVIDER:-custom}
+      AI_API_KEY: ${AI_API_KEY:-}
+      AI_BASE_URL: ${AI_BASE_URL:-}
+      AI_MODEL: ${AI_MODEL:-}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:5173,http://127.0.0.1:5173}
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+  frontend:
+    build: ./frontend
+    container_name: prototree-frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    command: npm run dev -- --host 0.0.0.0
+
+volumes:
+  pgdata:

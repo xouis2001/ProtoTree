@@ -1,0 +1,111 @@
+/* ====================================================================
+   Commercial — Commercial Protocols page
+   ==================================================================== */
+
+.commercial-header,
+.commercial-preview-header {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--gap-3xl);
+  align-items: start;
+}
+
+/* --- Commercial grid --- */
+.commercial-grid {
+  display: grid;
+  grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+  gap: var(--gap-5xl);
+  align-items: start;
+}
+
+/* --- Commercial list --- */
+.commercial-list {
+  gap: 10px;
+}
+
+/* --- Commercial item --- */
+.commercial-item {
+  width: 100%;
+  display: grid;
+  gap: 6px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--gap-xl) var(--gap-2xl);
+  color: var(--color-text-primary);
+  background: var(--color-bg-card);
+  text-align: left;
+}
+
+.commercial-item.active,
+.commercial-item:hover {
+  border-color: var(--color-primary);
+  background: var(--color-primary-50);
+}
+
+.commercial-item span,
+.commercial-item small {
+  color: var(--color-text-muted);
+}
+
+/* --- Commercial PDF frame --- */
+.commercial-pdf-frame {
+  width: 100%;
+  min-height: 720px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-bg-surface);
+}
+
+/* --- Commercial manufacturer select --- */
+.commercial-manufacturer-select select {
+  min-width: 240px;
+  padding-right: 42px;
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--color-primary) 50%), linear-gradient(135deg, var(--color-primary) 50%, transparent 50%);
+  background-position: calc(100% - 20px) calc(50% - 3px), calc(100% - 14px) calc(50% - 3px);
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+}
+
+/* --- Commercial filter grid --- */
+.commercial-filter-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--gap-2xl);
+  align-items: end;
+}
+
+.commercial-detail-page {
+  display: grid;
+  gap: var(--gap-5xl);
+}
+
+.commercial-detail-header {
+  align-items: start;
+}
+
+.commercial-detail-preview {
+  gap: var(--gap-2xl);
+}
+
+.commercial-pdf-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--gap-2xl);
+  padding: var(--gap-xl);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-surface);
+}
+
+.commercial-pdf-toolbar span {
+  flex: 1;
+  color: var(--color-text-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.commercial-detail-pdf-frame {
+  min-height: calc(100vh - 300px);
+}

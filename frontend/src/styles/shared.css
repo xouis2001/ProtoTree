@@ -1,0 +1,666 @@
+/* ====================================================================
+   Shared — Buttons, forms, messages, cards, chips, pills, tags
+   ==================================================================== */
+
+/* --- Card --- */
+.hero,
+.card {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-card);
+  padding: 32px;
+  box-shadow: var(--shadow-card);
+}
+
+/* --- App Message (Toast) --- */
+.app-message {
+  position: sticky;
+  top: 18px;
+  z-index: 20;
+  margin: 0;
+  padding: 18px 22px;
+  border-radius: var(--radius-xl);
+  font-weight: var(--font-weight-black);
+  box-shadow: var(--shadow-message);
+}
+
+.app-message.success {
+  color: var(--color-success-dark);
+  background: var(--color-success-light);
+  border: 1px solid var(--color-success);
+}
+
+.app-message.error {
+  color: var(--color-danger-darker);
+  background: #fecaca;
+  border: 1px solid var(--color-danger);
+}
+
+/* --- Inline Message --- */
+.message {
+  margin: 0;
+  padding: 14px 16px;
+  border-radius: var(--radius-xl);
+  color: var(--color-primary-darker);
+  background: var(--color-primary-100);
+  font-weight: var(--font-weight-bold);
+}
+
+.message.success {
+  color: #166534;
+  background: var(--color-success-bg);
+}
+
+.message.error {
+  color: var(--color-danger-dark);
+  background: var(--color-danger-light);
+}
+
+.inline-message {
+  position: static;
+}
+
+/* --- Buttons --- */
+.search-form button,
+.primary,
+.danger,
+.ghost,
+.tabs button,
+.section-heading button,
+.edit-row button,
+.edit-step button {
+  border: 0;
+  border-radius: var(--radius-lg);
+  padding: 13px 16px;
+  font-weight: var(--font-weight-extrabold);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, opacity 0.12s ease;
+}
+
+.search-form button:focus-visible,
+.primary:focus-visible,
+.danger:focus-visible,
+.ghost:focus-visible,
+.secondary:focus-visible,
+.tabs button:focus-visible,
+.section-heading button:focus-visible {
+  outline: 2px solid var(--color-primary-light);
+  outline-offset: 2px;
+}
+
+.search-form button,
+.primary {
+  color: #ffffff;
+  background: var(--color-primary);
+}
+
+.search-form button:hover:not(:disabled),
+.primary:hover:not(:disabled) {
+  box-shadow: var(--shadow-primary-sm);
+  transform: translateY(-1px);
+}
+
+.danger {
+  color: #ffffff;
+  background: var(--color-danger);
+}
+
+.section-heading button {
+  color: var(--color-primary-dark);
+  background: var(--color-primary-100);
+}
+
+.edit-row button,
+.edit-step button {
+  color: var(--color-danger-dark);
+  background: var(--color-danger-light);
+}
+
+.secondary {
+  border: 0;
+  border-radius: var(--radius-lg);
+  padding: 13px 16px;
+  color: var(--color-text-secondary);
+  background: var(--color-border);
+  font-weight: var(--font-weight-extrabold);
+}
+
+.ghost {
+  margin-top: auto;
+  border: 1px solid var(--color-sidebar-border);
+  border-radius: var(--radius-lg);
+  padding: 13px 16px;
+  color: var(--color-sidebar-muted);
+  background: var(--color-sidebar-surface);
+  font-weight: var(--font-weight-extrabold);
+}
+
+.ghost:hover {
+  color: var(--color-text-inverse);
+  background: var(--color-sidebar-hover);
+}
+
+/* --- Tabs --- */
+.tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap-base);
+  padding: 6px;
+  border-radius: var(--radius-xl);
+  background: var(--color-bg-page);
+}
+
+.tabs button {
+  color: var(--color-text-muted);
+  background: transparent;
+}
+
+.tabs button.active {
+  color: var(--color-sidebar-bg);
+  background: var(--color-bg-card);
+}
+
+.tabs.compact {
+  max-width: 420px;
+}
+
+.local-tabs {
+  background: var(--color-bg-card);
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+}
+
+/* --- Forms --- */
+.form {
+  display: grid;
+  gap: var(--gap-5xl);
+}
+
+/* --- Unified form controls --- */
+input:not([type='file']):not([type='checkbox']):not([type='radio']):not([type='color']),
+textarea,
+select {
+  width: 100%;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--input-radius);
+  padding: var(--input-padding);
+  color: var(--color-text-primary);
+  background: var(--color-bg-card);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+input:not([type='file']):not([type='checkbox']):not([type='radio']):not([type='color']):focus,
+textarea:focus,
+select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px var(--color-primary-100);
+}
+
+input:disabled,
+textarea:disabled,
+select:disabled {
+  color: var(--color-text-muted);
+  background: var(--color-bg-muted);
+}
+
+.form label {
+  display: grid;
+  gap: var(--gap-md);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-bold);
+}
+
+.search,
+.form input,
+.form textarea,
+.form select,
+.edit-row input,
+.edit-step input {
+  width: 100%;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--input-padding);
+  color: var(--color-text-primary);
+  background: var(--color-bg-card);
+  outline: none;
+}
+
+.form textarea {
+  min-height: 92px;
+  resize: none;
+  overflow: hidden;
+}
+
+.raw-textarea {
+  min-height: 260px !important;
+  line-height: 1.65;
+}
+
+.search-form {
+  display: grid;
+  gap: var(--gap-base);
+}
+
+/* --- Filter / Grid helpers --- */
+.filter-row,
+.filter-actions,
+.library-filter-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap-3xl);
+}
+
+.filter-search-row {
+  grid-template-columns: minmax(260px, 1.3fr) minmax(180px, 0.7fr) minmax(160px, 0.6fr) auto;
+  align-items: end;
+}
+
+.filter-actions button[type='button'] {
+  color: var(--color-text-subtle);
+  background: var(--color-sidebar-surface);
+}
+
+/* --- Shared layout patterns --- */
+.action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-lg);
+  align-items: center;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap-5xl);
+  margin-top: 8px;
+}
+
+.section-heading h3 {
+  margin: 0;
+}
+
+/* --- Badge / Chip / Pill patterns --- */
+.hero-badges,
+.demo-steps,
+.sidebar-stats,
+.rule-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-lg);
+}
+
+.hero-badges span,
+.demo-steps span,
+.sidebar-stats span,
+.rule-list span {
+  padding: 9px 12px;
+  border-radius: var(--radius-pill);
+  color: var(--color-primary-dark);
+  background: var(--color-primary-100);
+  font-size: 13px;
+  font-weight: var(--font-weight-extrabold);
+}
+
+.sidebar-stats span {
+  color: var(--color-text-subtle);
+  background: var(--color-sidebar-surface);
+}
+
+/* --- Filters (Protocol Library) --- */
+.filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: var(--gap-lg);
+  align-items: end;
+}
+
+.filters.compact {
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: var(--gap-base);
+}
+
+.filters label {
+  display: grid;
+  gap: var(--gap-md);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-extrabold);
+}
+
+.filters input,
+.filters select {
+  width: 100%;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--input-padding);
+  color: var(--color-text-primary);
+  background: var(--color-bg-card);
+  outline: none;
+}
+
+/* --- Content area --- */
+.content {
+  padding: 48px;
+  display: grid;
+  gap: var(--gap-6xl);
+  align-content: start;
+}
+
+/* --- Empty state --- */
+.empty-state {
+  border: 1px dashed var(--color-primary-300);
+  background: linear-gradient(135deg, #ffffff, var(--color-primary-50));
+}
+
+/* --- Pagination --- */
+.library-stats {
+  display: flex;
+  gap: var(--gap-lg);
+  align-items: center;
+  color: var(--color-text-muted);
+  font-size: 13px;
+  font-weight: var(--font-weight-bold);
+}
+
+/* --- Protocol source border-left --- */
+.protocol-card.protocol-source-user {
+  border-left: 4px solid var(--color-primary);
+}
+
+.protocol-card.protocol-source-base {
+  border-left: 4px solid var(--color-accent-green);
+}
+
+/* --- Shared gap grid shorthand --- */
+.library-page,
+.library-search-panel,
+.library-section,
+.library-result-list,
+.library-layout,
+.library-control-panel,
+.library-result-panel,
+.create-layout,
+.fork-grid,
+.fork-search-panel,
+.fork-edit-panel,
+.parse-panel,
+.result-panel,
+.step-list,
+.fork-search-panel,
+.fork-candidate-list,
+.fork-select-stage,
+.fork-edit-stage,
+.fork-source-card,
+.parse-grid,
+.contribution-card,
+.event-list,
+.profile-protocol-list,
+.comment-section,
+.step-comments,
+.pitfall-form,
+.comment-list,
+.protocol-edit-form,
+.folder-panel,
+.folder-form,
+.folder-tree,
+.my-library-main,
+.my-protocol-list,
+.upload-protocol-card,
+.upload-result-card,
+.commercial-upload-card,
+.commercial-list-card,
+.commercial-preview-card,
+.upload-protocol-page,
+.commercial-page,
+.commercial-create-page,
+.create-layout > .tabs,
+.file-extract-panel,
+.search-form,
+.resource-panel,
+.resource-form,
+.resource-list,
+.data-resources-page,
+.starred-page,
+.direct-protocol-form,
+.my-library-layout,
+.library-page,
+.fork-library-page,
+.profile-grid,
+.home-feature-card,
+.project-stats-card,
+.leaderboard-card,
+.leaderboard-list,
+.detail-page,
+.lineage-card {
+  display: grid;
+}
+
+.library-page,
+.detail-page,
+.fork-library-page,
+.upload-protocol-page,
+.commercial-page,
+.commercial-create-page,
+.data-resources-page,
+.profile-grid,
+.my-library-layout {
+  gap: var(--gap-6xl);
+}
+
+/* Two-column layouts */
+.library-layout,
+.fork-grid,
+.parse-grid {
+  grid-template-columns: minmax(280px, 360px) minmax(520px, 1fr);
+  align-items: start;
+  gap: 32px;
+}
+
+/* Sticky panels */
+.library-control-panel,
+.parse-panel,
+.fork-search-panel {
+  position: sticky;
+  top: 24px;
+  z-index: 10;
+}
+
+.library-result-panel,
+.result-panel,
+.fork-edit-panel {
+  min-width: 0;
+}
+
+/* Step editor grids */
+.step-editor {
+  grid-template-columns: 88px minmax(160px, 0.7fr) minmax(240px, 1.3fr) auto;
+}
+
+.simple-step-editor {
+  grid-template-columns: 72px minmax(120px, 0.42fr) 14px minmax(420px, 1.58fr) auto;
+  align-items: start;
+}
+
+.edit-row,
+.edit-step {
+  display: grid;
+  gap: var(--gap-base);
+  padding: 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-bg-surface);
+}
+
+.edit-row.two {
+  grid-template-columns: repeat(2, minmax(160px, 1fr));
+}
+
+.edit-row.three {
+  grid-template-columns: repeat(3, minmax(140px, 1fr));
+}
+
+.edit-row.four {
+  grid-template-columns: repeat(4, minmax(90px, 1fr));
+}
+
+.edit-step {
+  grid-template-columns: 88px minmax(180px, 1fr) minmax(180px, 1fr) auto;
+}
+
+.step-fixed-label {
+  padding: 13px 0;
+  color: var(--color-primary);
+  font-weight: var(--font-weight-black);
+  white-space: nowrap;
+}
+
+.step-colon {
+  padding: 13px 0;
+  color: var(--color-text-muted);
+  font-weight: var(--font-weight-black);
+  text-align: center;
+}
+
+.step-editor textarea {
+  width: 100%;
+  min-height: 92px;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--input-padding);
+  color: var(--color-text-primary);
+  background: var(--color-bg-card);
+  resize: none;
+  overflow: hidden;
+}
+
+.step-params {
+  padding: 10px 12px;
+  border-radius: var(--radius-lg);
+  color: var(--color-primary-darker) !important;
+  background: var(--color-primary-100);
+  font-weight: var(--font-weight-bold);
+}
+
+/* --- Focus styles for inputs in specific containers --- */
+.protocol-edit-form input,
+.protocol-edit-form textarea,
+.protocol-edit-form select,
+.upload-result-card input,
+.upload-result-card textarea,
+.commercial-filter-card input,
+.commercial-filter-card select {
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.protocol-edit-form input:focus,
+.protocol-edit-form textarea:focus,
+.protocol-edit-form select:focus,
+.upload-result-card input:focus,
+.upload-result-card textarea:focus,
+.commercial-filter-card input:focus,
+.commercial-filter-card select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px var(--color-primary-100);
+}
+
+/* --- Steps display --- */
+.steps {
+  display: grid;
+  gap: var(--gap-xl);
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: var(--gap-xl);
+  padding: 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+}
+
+.step span {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #ffffff;
+  background: var(--color-primary);
+  font-weight: var(--font-weight-extrabold);
+}
+
+.step p {
+  color: var(--color-text-muted);
+  margin: 6px 0 0;
+}
+
+/* --- Pitfall --- */
+.pitfall-list {
+  display: grid;
+  gap: var(--gap-base);
+  margin-top: 12px;
+}
+
+.pitfall-item {
+  display: grid;
+  gap: 6px;
+  padding: 12px;
+  border-left: 5px solid var(--color-accent-orange);
+  border-radius: var(--radius-xl);
+  background: var(--color-accent-orange-bg);
+}
+
+.pitfall-item strong {
+  color: #9a3412;
+}
+
+.pitfall-item p {
+  margin: 0;
+}
+
+.pitfall-item span {
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+/* --- Star --- */
+.star-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-lg);
+  align-items: center;
+  margin: 14px 0;
+}
+
+.star-summary span {
+  padding: 10px 14px;
+  border-radius: var(--radius-pill);
+  color: var(--color-warning-dark);
+  background: var(--color-warning-light);
+  font-weight: var(--font-weight-black);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.star-button {
+  border: 0;
+  border-radius: var(--radius-pill);
+  padding: 10px 15px;
+  color: var(--color-warning-dark);
+  background: var(--color-warning-bg);
+  font-weight: var(--font-weight-black);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.star-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.25);
+}
+
+.star-button.active {
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--color-warning), var(--color-danger));
+}

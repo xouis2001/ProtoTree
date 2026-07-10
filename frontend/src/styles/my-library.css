@@ -1,0 +1,262 @@
+/* ====================================================================
+   My Library — My Protocol Library / Folder tree
+   ==================================================================== */
+
+.my-library-layout {
+  display: grid;
+  grid-template-columns: minmax(300px, 380px) minmax(480px, 1fr);
+  gap: 34px;
+  align-items: start;
+}
+
+.folder-panel,
+.my-library-main {
+  gap: var(--gap-5xl);
+}
+
+.folder-panel-header {
+  display: flex;
+  gap: var(--gap-3xl);
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.folder-panel-header h2 {
+  margin-bottom: 0;
+}
+
+.folder-panel-header > span,
+.my-library-counts span {
+  padding: 8px var(--gap-2xl);
+  border-radius: var(--radius-pill);
+  color: var(--color-primary-dark);
+  background: var(--color-primary-50);
+  font-size: 13px;
+  font-weight: var(--font-weight-extrabold);
+  white-space: nowrap;
+}
+
+/* --- Folder form --- */
+.folder-form {
+  display: grid;
+  gap: var(--gap-4xl);
+  margin: var(--gap-md) 0 var(--gap-lg);
+  padding: var(--gap-4xl);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: var(--color-bg-surface);
+}
+
+.folder-form label {
+  display: grid;
+  gap: var(--gap-lg);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-extrabold);
+}
+
+.folder-form > input,
+.folder-form > label {
+  min-width: 0;
+}
+
+.folder-form > button {
+  margin-top: var(--gap-md);
+}
+
+.folder-form input,
+.folder-select {
+  width: 100%;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--input-padding);
+  color: var(--color-text-primary);
+  background: var(--color-bg-card);
+  outline: none;
+}
+
+/* --- Folder tree --- */
+.folder-tree {
+  gap: var(--gap-xl);
+  padding: var(--gap-3xl);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: var(--color-bg-surface);
+}
+
+.folder-tree-node {
+  position: relative;
+  display: grid;
+  gap: var(--gap-lg);
+}
+
+.folder-tree-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--gap-xl);
+  margin-left: calc(var(--folder-depth) * 20px);
+}
+
+.folder-tree-children {
+  position: relative;
+  display: grid;
+  gap: var(--gap-lg);
+  margin-left: var(--gap-4xl);
+  padding-left: var(--gap-3xl);
+  border-left: 2px solid var(--color-primary-100);
+}
+
+.folder-branch {
+  width: var(--gap-xl);
+  height: 24px;
+  border-bottom: 2px solid var(--color-primary-100);
+  align-self: start;
+}
+
+.folder-tree-item {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: var(--gap-lg);
+  align-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 14px var(--gap-3xl);
+  color: var(--color-text-secondary);
+  background: var(--color-bg-card);
+  font-weight: var(--font-weight-extrabold);
+  text-align: left;
+  box-shadow: var(--shadow-sm);
+}
+
+.folder-tree-item.active {
+  color: var(--color-text-inverse);
+  border-color: var(--color-primary);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+}
+
+.folder-shortcut {
+  background: var(--color-primary-50);
+}
+
+.folder-shortcut + .folder-shortcut {
+  margin-top: var(--gap-md);
+}
+
+.folder-icon {
+  width: 18px;
+  height: 14px;
+  border-radius: var(--radius-xs);
+  background: var(--color-accent-yellow);
+  box-shadow: inset 0 4px 0 var(--color-accent-yellow-light);
+}
+
+.folder-icon.has-children {
+  background: var(--color-accent-blue);
+  box-shadow: inset 0 4px 0 var(--color-primary-300);
+}
+
+.folder-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.folder-child-count {
+  min-width: 24px;
+  padding: 3px 7px;
+  border-radius: var(--radius-pill);
+  color: var(--color-primary);
+  background: var(--color-primary-100);
+  font-size: 12px;
+  text-align: center;
+}
+
+.folder-tree-item.active .folder-child-count {
+  color: var(--color-primary-dark);
+  background: var(--color-bg-card);
+}
+
+/* --- My protocol list items --- */
+.my-library-toolbar {
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) auto;
+  gap: var(--gap-3xl);
+  align-items: end;
+  padding: var(--gap-3xl);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: var(--color-bg-surface);
+}
+
+.my-library-toolbar label,
+.my-protocol-move {
+  display: grid;
+  gap: var(--gap-md);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-extrabold);
+}
+
+.my-library-counts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-lg);
+  justify-content: flex-end;
+}
+
+.my-protocol-item {
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) minmax(200px, 280px);
+  gap: var(--gap-4xl);
+  align-items: end;
+  padding: var(--gap-4xl);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-bg-card);
+}
+
+.my-protocol-item.active {
+  border-color: var(--color-primary);
+  background: linear-gradient(135deg, var(--color-bg-card), var(--color-primary-50));
+}
+
+.my-protocol-item > button {
+  display: grid;
+  gap: var(--gap-md);
+  border: 0;
+  padding: 0;
+  color: var(--color-text-primary);
+  background: transparent;
+  text-align: left;
+}
+
+.my-protocol-item strong {
+  font-size: 16px;
+}
+
+.my-protocol-item p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.my-protocol-item span {
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+.my-library-empty {
+  display: grid;
+  gap: var(--gap-md);
+  padding: var(--gap-5xl);
+  border: 1px dashed var(--color-border-dashed);
+  border-radius: var(--radius-card);
+  color: var(--color-primary-darker);
+  background: var(--color-primary-50);
+  text-align: center;
+}
+
+.my-library-empty span {
+  color: var(--color-text-muted);
+  font-size: 13px;
+}

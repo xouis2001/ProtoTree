@@ -1,0 +1,276 @@
+/* ====================================================================
+   Editor — Rich text editor and classification picker
+   ==================================================================== */
+
+/* --- Rich text editor --- */
+.rich-text-editor {
+  overflow: hidden;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-xl);
+  background: var(--color-bg-card);
+}
+
+.rich-text-editor.disabled {
+  background: var(--color-bg-surface);
+  opacity: 0.78;
+}
+
+.rich-text-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-md);
+  align-items: center;
+  padding: var(--gap-xl);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg-surface);
+}
+
+.rich-text-toolbar button,
+.rich-color-picker,
+.rich-table-picker {
+  border: 1px solid var(--color-border-dashed);
+  border-radius: var(--radius-pill);
+  padding: 8px var(--gap-2xl);
+  color: var(--color-primary-dark);
+  background: var(--color-primary-50);
+  font-weight: var(--font-weight-black);
+}
+
+/* --- Color / table picker inline --- */
+.rich-text-toolbar .rich-color-picker,
+.rich-text-toolbar .rich-table-picker,
+.rich-text-toolbar .rich-table-size-control {
+  display: inline-flex;
+  gap: var(--gap-md);
+  align-items: center;
+  width: auto;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.rich-text-toolbar .rich-color-picker,
+.rich-text-toolbar .rich-table-picker {
+  flex: 0 0 auto;
+  min-height: 38px;
+}
+
+.rich-text-toolbar .rich-table-picker {
+  flex-wrap: nowrap;
+  gap: var(--gap-lg);
+  padding-right: var(--gap-lg);
+}
+
+.rich-text-toolbar .rich-color-picker input {
+  flex: 0 0 auto;
+  width: 28px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.rich-text-toolbar .rich-table-stepper {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  border: 1px solid var(--color-border-dashed);
+  border-radius: var(--radius-pill);
+  background: var(--color-bg-card);
+  overflow: hidden;
+}
+
+.rich-text-toolbar .rich-table-stepper strong {
+  min-width: 28px;
+  color: var(--color-text-primary);
+  text-align: center;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.rich-text-toolbar .rich-stepper-button {
+  display: grid;
+  place-items: center;
+  flex: 0 0 28px;
+  width: 28px;
+  height: 30px;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  color: var(--color-primary-dark);
+  background: transparent;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.rich-text-toolbar .rich-stepper-button:hover:not(:disabled) {
+  background: var(--color-primary-100);
+}
+
+.rich-text-toolbar .rich-stepper-button:disabled {
+  color: var(--color-text-light);
+  cursor: not-allowed;
+}
+
+.rich-text-toolbar .rich-insert-table-button {
+  flex: 0 0 auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+/* --- Rich text surface --- */
+.rich-text-surface {
+  padding: var(--gap-3xl);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-normal);
+  line-height: 1.75;
+  outline: none;
+}
+
+.rich-text-surface:empty::before {
+  content: attr(data-placeholder);
+  color: var(--color-text-light);
+}
+
+.rich-text-surface table,
+.rich-protocol-content table {
+  width: 100%;
+  margin: var(--gap-xl) 0;
+  border-collapse: collapse;
+}
+
+.rich-text-surface td,
+.rich-text-surface th,
+.rich-protocol-content td,
+.rich-protocol-content th {
+  min-width: 96px;
+  border: 1px solid var(--color-border-light);
+  padding: 8px 10px;
+}
+
+/* --- Rich protocol content --- */
+.rich-protocol-content {
+  white-space: normal;
+  line-height: 1.75;
+}
+
+.rich-protocol-content p,
+.rich-protocol-content div {
+  margin: 0 0 10px;
+}
+
+/* --- Classification picker --- */
+.classification-picker {
+  display: grid;
+  gap: var(--gap-4xl);
+}
+
+.classification-section {
+  display: grid;
+  gap: var(--gap-lg);
+}
+
+.classification-heading {
+  display: flex;
+  gap: var(--gap-lg);
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+/* --- Category card grid --- */
+.category-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: var(--gap-lg);
+}
+
+.category-card {
+  display: grid;
+  gap: var(--gap-md);
+  min-height: 118px;
+  padding: var(--gap-2xl);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  color: var(--color-text-primary);
+  background: var(--color-bg-card);
+  text-align: left;
+}
+
+.category-card strong {
+  color: var(--color-sidebar-bg);
+}
+
+.category-card span {
+  color: var(--color-text-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.category-card.active {
+  background: var(--color-primary-50);
+  box-shadow: var(--shadow-primary-sm);
+}
+
+/* --- Taxonomy chip grid --- */
+.taxonomy-chip-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-lg);
+}
+
+.taxonomy-chip {
+  display: inline-flex;
+  gap: var(--gap-md);
+  align-items: center;
+  border: 1px solid var(--color-border-dashed);
+  border-radius: var(--radius-pill);
+  padding: 9px var(--gap-3xl);
+  color: var(--color-primary-dark);
+  background: var(--color-primary-50);
+  font-weight: var(--font-weight-black);
+}
+
+.taxonomy-chip.active {
+  color: var(--color-text-inverse);
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+}
+
+.taxonomy-chip small {
+  border-radius: var(--radius-pill);
+  padding: 2px 6px;
+  color: var(--color-text-secondary);
+  background: var(--color-border);
+  font-size: 11px;
+}
+
+.taxonomy-chip.active small {
+  color: var(--color-primary-100);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* --- Tag count --- */
+.tag-count {
+  border-radius: var(--radius-pill);
+  padding: 6px 10px;
+  color: var(--color-warning-amber);
+  background: var(--color-warning-light);
+  font-weight: var(--font-weight-black);
+}
+
+.tag-count.ok {
+  color: var(--color-warning-green);
+  background: var(--color-success-bg);
+}
+
+/* --- Taxonomy create row --- */
+.taxonomy-create-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--gap-2xl);
+  align-items: center;
+}
+
+.taxonomy-create-row:has(select) {
+  grid-template-columns: minmax(180px, 260px) minmax(0, 1fr) auto;
+}

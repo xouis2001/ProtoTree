@@ -1,0 +1,127 @@
+/* ====================================================================
+   Comment — Comment section across pages
+   ==================================================================== */
+
+/* --- Pitfall form / comment section / step comments --- */
+.pitfall-form,
+.comment-section,
+.step-comments {
+  margin-top: var(--gap-3xl);
+  padding-top: var(--gap-3xl);
+  border-top: 1px solid var(--color-border);
+}
+
+/* --- Protocol comments card --- */
+.protocol-comments-card {
+  display: grid;
+  gap: var(--gap-3xl);
+  margin-top: var(--gap-5xl);
+  padding: var(--gap-6xl);
+  border: 1px solid var(--color-primary-100);
+  border-radius: 24px;
+  background: linear-gradient(135deg, var(--color-bg-card), var(--color-primary-50));
+  box-shadow: var(--shadow-primary-sm);
+}
+
+.comment-panel-header {
+  display: flex;
+  gap: var(--gap-3xl);
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.comment-panel-header h3 {
+  margin: 2px 0 4px;
+}
+
+.comment-panel-header span,
+.comment-form-footer span {
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+.comment-panel-header > strong {
+  border-radius: var(--radius-pill);
+  padding: 7px var(--gap-2xl);
+  color: var(--color-primary-dark);
+  background: var(--color-primary-50);
+  white-space: nowrap;
+}
+
+/* --- Comment form --- */
+.comment-form {
+  display: grid;
+  gap: var(--gap-2xl);
+  padding: var(--gap-3xl);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  background: var(--color-bg-card);
+}
+
+.comment-form textarea {
+  min-height: 110px;
+  border: 1px solid var(--color-primary-100);
+  background: var(--color-bg-surface);
+}
+
+/* --- Comment form footer --- */
+.comment-form-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-2xl);
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* --- Comment list --- */
+.comment-list {
+  display: grid;
+  gap: var(--gap-2xl);
+}
+
+.comment-item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--gap-2xl);
+  padding: var(--gap-3xl);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  background: var(--color-bg-card);
+}
+
+.comment-item-body {
+  display: grid;
+  gap: var(--gap-md);
+}
+
+.comment-item-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-md);
+  align-items: center;
+  justify-content: space-between;
+}
+
+.comment-item p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+}
+
+.comment-item span,
+.comment-empty-state span {
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+/* --- Comment empty state --- */
+.comment-empty-state {
+  display: grid;
+  gap: 6px;
+  padding: var(--gap-3xl);
+  border: 1px dashed var(--color-border-dashed);
+  border-radius: 20px;
+  color: var(--color-primary-darker);
+  background: var(--color-primary-50);
+  text-align: center;
+}

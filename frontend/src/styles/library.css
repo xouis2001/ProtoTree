@@ -1,0 +1,587 @@
+/* ====================================================================
+   Library — Protocol Library page
+   ==================================================================== */
+
+/* --- Protocol sidebar list --- */
+.protocol-list {
+  display: grid;
+  gap: var(--gap-3xl);
+}
+
+.protocol-item {
+  width: 100%;
+  display: grid;
+  gap: 6px;
+  border: 0;
+  border-radius: var(--radius-xl);
+  padding: var(--gap-xl) var(--gap-2xl);
+  color: var(--color-sidebar-text);
+  background: transparent;
+  text-align: left;
+}
+
+.protocol-item span,
+.protocol-item em {
+  color: var(--color-sidebar-muted);
+  font-size: 13px;
+}
+
+.protocol-item em {
+  font-style: normal;
+}
+
+.protocol-item.active,
+.protocol-item:hover {
+  color: var(--color-sidebar-bg);
+  background: var(--color-bg-surface);
+}
+
+.protocol-item.active span,
+.protocol-item.active em,
+.protocol-item:hover span,
+.protocol-item:hover em {
+  color: var(--color-text-secondary);
+}
+
+/* --- Search top --- */
+.library-search-top {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--gap-3xl);
+  align-items: end;
+}
+
+.library-search-top label,
+.library-filter-grid label {
+  display: grid;
+  gap: var(--gap-md);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-extrabold);
+}
+
+/* --- Input styles scoped to library panels --- */
+.library-search-input,
+.library-filter-grid input,
+.library-filter-grid select,
+.parse-panel textarea,
+.result-panel input,
+.result-panel select,
+.result-panel textarea,
+.fork-edit-panel input,
+.fork-edit-panel select,
+.fork-edit-panel textarea {
+  width: 100%;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--input-padding);
+  color: var(--color-text-primary);
+  background: var(--color-bg-card);
+  outline: none;
+}
+
+/* --- Sort / summary / meta rows --- */
+.library-sort-row,
+.library-summary-row,
+.library-result-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-base);
+  align-items: center;
+}
+
+.library-sort-row span,
+.library-summary-row span,
+.library-result-meta span {
+  padding: 9px var(--gap-2xl);
+  border-radius: var(--radius-pill);
+  color: var(--color-primary-dark);
+  background: var(--color-primary-100);
+  font-size: 13px;
+  font-weight: var(--font-weight-extrabold);
+}
+
+.library-result-meta .library-author {
+  padding: 7px var(--gap-2xl) 7px 8px;
+  gap: var(--gap-md);
+  color: var(--color-sidebar-bg);
+  background: var(--color-bg-surface);
+  box-shadow: inset 0 0 0 1px var(--color-border-light);
+  font-weight: var(--font-weight-extrabold);
+}
+
+.library-sort-row button {
+  border: 0;
+  border-radius: var(--radius-pill);
+  padding: 8px var(--gap-2xl);
+  color: var(--color-text-secondary);
+  background: var(--color-border);
+  font-size: 13px;
+  font-weight: var(--font-weight-extrabold);
+}
+
+.library-sort-row button.active {
+  color: var(--color-text-inverse);
+  background: var(--color-primary);
+}
+
+/* --- Filter grid override --- */
+.library-filter-grid {
+  grid-template-columns: 1fr 1fr;
+}
+
+.library-control-panel .library-filter-grid {
+  grid-template-columns: 1fr;
+}
+
+/* --- Panel headings --- */
+.library-control-panel h2,
+.library-result-panel h2,
+.parse-panel h2,
+.result-panel h2,
+.fork-search-panel h2,
+.fork-edit-panel h2 {
+  margin-bottom: 0;
+}
+
+.library-result-panel > h2 {
+  padding-bottom: var(--gap-xl);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* --- Result item --- */
+.library-result-item {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) minmax(240px, 0.85fr);
+  gap: var(--gap-3xl);
+  align-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--gap-3xl);
+  color: var(--color-text-primary);
+  background: var(--color-bg-card);
+  text-align: left;
+  box-shadow: none;
+}
+
+.library-result-item p {
+  margin: 6px 0 0;
+  color: var(--color-text-muted);
+}
+
+.library-result-item.active {
+  border-color: var(--color-primary);
+  background: linear-gradient(135deg, var(--color-bg-card), var(--color-primary-50));
+}
+
+/* --- Label styles in panels --- */
+.result-panel label,
+.fork-edit-panel label {
+  display: grid;
+  gap: var(--gap-md);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-extrabold);
+}
+
+.result-panel .step-editor {
+  grid-template-columns: 76px minmax(160px, 0.75fr) minmax(300px, 1.4fr) auto;
+}
+
+/* --- Parse panel textarea --- */
+.parse-panel textarea {
+  min-height: 360px;
+  line-height: 1.65;
+  resize: vertical;
+}
+
+/* --- Protocol list panel --- */
+.protocol-list-panel {
+  min-width: 0;
+}
+
+/* --- Protocol card (card view in library) --- */
+.protocol-card {
+  width: 100%;
+  display: grid;
+  gap: var(--gap-xl);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--gap-4xl) var(--gap-5xl);
+  color: var(--color-text-primary);
+  background: var(--color-bg-card);
+  text-align: left;
+  box-shadow: none;
+}
+
+.protocol-card.selected {
+  border-color: var(--color-primary);
+  background: linear-gradient(135deg, var(--color-bg-card), var(--color-primary-50));
+}
+
+.protocol-card.protocol-source-base {
+  border-color: var(--color-accent-green-light);
+  background: linear-gradient(135deg, var(--color-bg-card), var(--color-accent-green-bg));
+}
+
+.protocol-card.protocol-source-base.selected {
+  border-color: var(--color-accent-green);
+  background: linear-gradient(135deg, var(--color-bg-card), var(--color-success-bg));
+}
+
+.protocol-card-title {
+  display: flex;
+  gap: var(--gap-xl);
+  align-items: baseline;
+}
+
+.protocol-card-title span {
+  color: var(--color-text-muted);
+  font-size: 13px;
+  font-weight: var(--font-weight-bold);
+}
+
+.protocol-card p {
+  color: var(--color-text-muted);
+  margin: 4px 0 0;
+}
+
+.protocol-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-lg);
+  align-items: center;
+}
+
+.protocol-card-meta > span {
+  padding: 7px var(--gap-2xl);
+  border-radius: var(--radius-pill);
+  color: var(--color-primary-dark);
+  background: var(--color-primary-100);
+  font-size: 12px;
+  font-weight: var(--font-weight-extrabold);
+}
+
+.protocol-card-meta .avatar-line {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  padding: 7px var(--gap-2xl) 7px 8px;
+  border-radius: var(--radius-pill);
+  color: var(--color-sidebar-bg);
+  background: var(--color-bg-surface);
+  box-shadow: inset 0 0 0 1px var(--color-border-light);
+  font-weight: var(--font-weight-extrabold);
+}
+
+
+.protocol-card-meta .avatar-line .avatar {
+  padding: 0;
+  border-radius: 50%;
+  background: var(--avatar-bg, #ffffff);
+  color: var(--color-primary-dark);
+  box-shadow: 0 0 0 1px var(--color-border-light);
+}
+
+.protocol-card-meta .avatar-line .avatar-inline-svg {
+  padding: 0;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: none;
+}
+
+.protocol-source-base .protocol-source-pill {
+  color: var(--color-success-dark);
+  background: var(--color-success-bg);
+}
+
+.protocol-source-user .protocol-source-pill {
+  color: var(--color-primary-dark);
+  background: var(--color-primary-100);
+}
+
+/* --- Protocol taxonomy summary --- */
+.protocol-taxonomy-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-md);
+  margin: var(--gap-2xl) 0;
+}
+
+.protocol-taxonomy-summary span {
+  border-radius: var(--radius-pill);
+  padding: 7px 11px;
+  color: var(--color-primary-dark);
+  background: var(--color-primary-50);
+  font-weight: var(--font-weight-extrabold);
+}
+
+/* --- Detail grid (library detail) --- */
+.detail-grid {
+  display: grid;
+  grid-template-columns: minmax(480px, 1fr) minmax(320px, 420px);
+  gap: var(--gap-5xl);
+  align-items: start;
+}
+
+.detail-grid > section {
+  display: grid;
+  gap: var(--gap-5xl);
+}
+
+/* --- Protocol edit form --- */
+.protocol-edit-form {
+  display: grid;
+  gap: var(--gap-4xl);
+  margin-top: var(--gap-3xl);
+  padding: var(--gap-5xl);
+  border: 1px solid var(--color-border-dashed);
+  border-radius: var(--radius-xl);
+  background: var(--color-primary-50);
+}
+
+.protocol-edit-form label {
+  display: grid;
+  gap: var(--gap-md);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-extrabold);
+}
+
+.protocol-edit-form input,
+.protocol-edit-form textarea,
+.protocol-edit-form select {
+  width: 100%;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--input-padding);
+  background: var(--color-bg-card);
+}
+
+.protocol-edit-form textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.protocol-edit-main-text {
+  min-height: 320px !important;
+  line-height: 1.7;
+}
+
+/* --- Filter field --- */
+.filter-field,
+.upload-result-card label {
+  display: grid;
+  gap: var(--gap-md);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-extrabold);
+}
+
+.filter-field span {
+  font-size: 13px;
+}
+
+/* --- Upload result card --- */
+.upload-result-card input,
+.upload-result-card textarea {
+  width: 100%;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--input-padding);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-card);
+}
+
+.upload-result-card textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+
+/* --- Upload AI actions --- */
+.upload-ai-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-2xl);
+  align-items: center;
+  margin: var(--gap-2xl) 0;
+  padding: var(--gap-3xl);
+  border: 1px solid var(--color-primary-100);
+  border-radius: var(--radius-xl);
+  background: var(--color-primary-50);
+}
+
+.upload-ai-actions .muted {
+  flex: 1;
+  min-width: 240px;
+}
+
+/* --- Upload meta grid --- */
+.upload-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gap-xl);
+}
+
+/* --- File extract panel --- */
+.file-extract-panel input[type='file'] {
+  width: 100%;
+  border: 1px dashed var(--color-primary-300);
+  border-radius: 16px;
+  padding: var(--gap-2xl);
+  color: var(--color-primary-dark);
+  background: var(--color-primary-50);
+  font-weight: var(--font-weight-extrabold);
+}
+
+/* --- Plain protocol text --- */
+.plain-protocol-text {
+  min-height: 360px;
+  white-space: pre-wrap;
+}
+
+.upload-result-card .plain-protocol-text {
+  overflow: hidden;
+  resize: none;
+}
+
+.plain-protocol-content {
+  white-space: pre-wrap;
+  padding: var(--gap-3xl);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-bg-surface);
+  line-height: 1.75;
+}
+
+.upload-result-card label {
+  display: grid;
+  gap: var(--gap-md);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-extrabold);
+}
+
+/* --- Protocol edit header --- */
+.protocol-edit-header,
+.commercial-filter-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--gap-2xl);
+  align-items: end;
+}
+
+.protocol-edit-header h3 {
+  margin: 4px 0 0;
+}
+
+/* --- Protocol edit grid --- */
+.protocol-edit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gap-3xl);
+}
+
+.protocol-edit-grid.single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* --- Direct protocol page --- */
+.direct-protocol-page {
+  display: grid;
+}
+
+.direct-protocol-form {
+  display: grid;
+  gap: var(--gap-3xl);
+}
+
+.direct-protocol-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gap-xl);
+}
+
+.direct-protocol-form label,
+.rich-editor-field {
+  display: grid;
+  gap: var(--gap-md);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-extrabold);
+}
+
+.direct-protocol-form input,
+.direct-protocol-form textarea,
+.direct-protocol-form select {
+  width: 100%;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--input-padding);
+  background: var(--color-bg-card);
+}
+
+.direct-protocol-form textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+
+/* --- Taxonomy filter block --- */
+.taxonomy-filter-block {
+  display: grid;
+  gap: var(--gap-xl);
+}
+
+.taxonomy-filter-block > span {
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-black);
+}
+
+.taxonomy-filters {
+  grid-template-columns: 1fr;
+  gap: var(--gap-5xl);
+}
+
+.compact-chip-grid {
+  max-height: 168px;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.library-loading-pill,
+.protocol-loading-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-primary-dark);
+  font-weight: var(--font-weight-extrabold);
+}
+
+.library-loading-pill {
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--color-primary-50);
+  border: 1px solid var(--color-primary-100);
+}
+
+.protocol-loading-state {
+  margin: 8px 0 14px;
+  padding: 10px 12px;
+  border-radius: var(--radius-lg);
+  background: var(--color-primary-50);
+  border: 1px solid var(--color-primary-100);
+}
+
+.loading-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--color-primary);
+  animation: loadingPulse 0.9s ease-in-out infinite alternate;
+}
+
+@keyframes loadingPulse {
+  from {
+    opacity: 0.35;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}

@@ -1,0 +1,68 @@
+.avatar {
+  --avatar-size: 42px;
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 var(--avatar-size);
+  overflow: hidden;
+  position: relative;
+  background: var(--avatar-bg, #f4dcc8);
+  border: 2px solid rgba(255, 255, 255, 0.72);
+  box-shadow: 0 10px 24px rgba(63, 36, 20, 0.14), inset 0 0 0 1px rgba(64, 36, 20, 0.08);
+  color: #5f3727;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.avatar-tiny {
+  --avatar-size: 24px;
+  border-width: 1px;
+}
+
+.avatar-small {
+  --avatar-size: 30px;
+  border-width: 1.5px;
+}
+
+.avatar-medium {
+  --avatar-size: 46px;
+}
+
+.avatar-large {
+  --avatar-size: 82px;
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+.avatar-builder-disabled {
+  border: 1px dashed #d8bca6;
+  border-radius: 18px;
+  padding: 16px;
+  color: #7c5d48;
+  background: rgba(255, 247, 239, 0.7);
+}
+
+
+.avatar-inline-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: inherit;
+  overflow: hidden;
+}
+
+.avatar-inline-svg svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: inherit;
+}
