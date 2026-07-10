@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ProtoTree Showcase</title>
+    <link rel="stylesheet" href="./showcase.css">
+  </head>
+  <body>
+    <main class="showcase">
+      <section class="shot shot-overview" id="overview">
+        <aside class="sidebar">
+          <div class="brand">
+            <img src="../../frontend/public/brand/prototree-mark.svg" alt="">
+            <div>
+              <strong>ProtoTree</strong>
+              <span>Protocol knowledge base</span>
+            </div>
+          </div>
+          <div class="user">
+            <span class="avatar">PT</span>
+            <div>
+              <strong>Demo Researcher</strong>
+              <span>Contribution Profile</span>
+            </div>
+          </div>
+          <nav>
+            <a class="active">Overview</a>
+            <a>Protocol Library</a>
+            <a>Upload Word/PDF</a>
+            <a>Fork Protocol</a>
+            <a>Commercial Protocols</a>
+            <a>Data Resources</a>
+            <a>Profile</a>
+          </nav>
+        </aside>
+        <section class="workspace">
+          <header class="topbar">
+            <div>
+              <p>Laboratory protocol sharing system</p>
+              <h1>Reusable protocols, forks, comments, and contribution metrics in one place.</h1>
+            </div>
+            <button>New Protocol</button>
+          </header>
+          <div class="hero-grid">
+            <article class="hero-card">
+              <span class="kicker">Knowledge Base</span>
+              <strong>128</strong>
+              <p>protocol records organized by source, category, and team ownership</p>
+            </article>
+            <article class="hero-card green">
+              <span class="kicker">Collaboration</span>
+              <strong>43</strong>
+              <p>forks, comments, and protocol updates captured as reusable context</p>
+            </article>
+            <article class="hero-card amber">
+              <span class="kicker">AI Assist</span>
+              <strong>JSON</strong>
+              <p>Word and PDF text can be formatted into structured protocol drafts</p>
+            </article>
+          </div>
+          <div class="content-grid">
+            <article class="panel large">
+              <div class="panel-head">
+                <div>
+                  <span class="kicker">Protocol Tree</span>
+                  <h2>Fork relationships show how methods evolve</h2>
+                </div>
+                <span class="tag">Versioned</span>
+              </div>
+              <div class="tree">
+                <div class="node root">Immunofluorescence v1.0</div>
+                <div class="branch">
+                  <div class="node">Low-background wash variant</div>
+                  <div class="node">Confocal imaging notes</div>
+                  <div class="node">Tissue section workflow</div>
+                </div>
+              </div>
+            </article>
+            <article class="panel">
+              <span class="kicker">Contribution Profile</span>
+              <h2>Team activity</h2>
+              <div class="bars">
+                <label><span>Protocols</span><i style="--w: 84%"></i></label>
+                <label><span>Updates</span><i style="--w: 68%"></i></label>
+                <label><span>Comments</span><i style="--w: 52%"></i></label>
+                <label><span>Forks</span><i style="--w: 38%"></i></label>
+              </div>
+            </article>
+          </div>
+        </section>
+      </section>
+
+      <section class="shot" id="library">
+        <aside class="sidebar compact">
+          <div class="brand">
+            <img src="../../frontend/public/brand/prototree-mark.svg" alt="">
+            <div><strong>ProtoTree</strong><span>Browse</span></div>
+          </div>
+          <nav>
+            <a>Overview</a>
+            <a class="active">Protocol Library</a>
+            <a>Commercial Protocols</a>
+            <a>My Library</a>
+          </nav>
+        </aside>
+        <section class="workspace">
+          <header class="section-title">
+            <p>Protocol Library</p>
+            <h1>Search, classify, and open protocols without exposing private records.</h1>
+          </header>
+          <div class="library-layout">
+            <aside class="filters">
+              <h2>Filters</h2>
+              <label>Category<select><option>Cell and Tissue</option></select></label>
+              <label>Source<select><option>Team uploads</option></select></label>
+              <label>Visibility<select><option>Shared with lab</option></select></label>
+              <div class="chip-row">
+                <span>IF</span><span>Western blot</span><span>qPCR</span><span>Imaging</span>
+              </div>
+            </aside>
+            <div class="results">
+              <div class="search">
+                <span>Search title, author, tag, or reagent...</span>
+                <button>Search</button>
+              </div>
+              <article class="result active">
+                <div><h2>Immunofluorescence staining workflow</h2><p>Cell fixation, blocking, antibody incubation, imaging checklist</p></div>
+                <span class="tag blue">Public</span>
+              </article>
+              <article class="result">
+                <div><h2>Western blot membrane transfer notes</h2><p>Sample prep, transfer settings, antibody dilution log</p></div>
+                <span class="tag green">Forked</span>
+              </article>
+              <article class="result">
+                <div><h2>qPCR plate setup and quality control</h2><p>Primer layout, melt curve review, replicate tracking</p></div>
+                <span class="tag amber">Reviewed</span>
+              </article>
+              <div class="preview">
+                <div class="panel-head">
+                  <div><span class="kicker">Selected Protocol</span><h2>Immunofluorescence staining workflow</h2></div>
+                  <span class="tag">v1.3</span>
+                </div>
+                <ol>
+                  <li><strong>Prepare cells</strong><span>Seed samples and confirm density before fixation.</span></li>
+                  <li><strong>Fix and permeabilize</strong><span>Record reagent concentration and timing as structured fields.</span></li>
+                  <li><strong>Block and incubate</strong><span>Keep antibody information reusable for future forks.</span></li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section class="shot" id="editor">
+        <aside class="sidebar compact">
+          <div class="brand">
+            <img src="../../frontend/public/brand/prototree-mark.svg" alt="">
+            <div><strong>ProtoTree</strong><span>Create</span></div>
+          </div>
+          <nav>
+            <a>New Protocol</a>
+            <a class="active">Upload Word/PDF</a>
+            <a>Fork Protocol</a>
+            <a>Resources</a>
+          </nav>
+        </aside>
+        <section class="workspace">
+          <header class="section-title">
+            <p>AI-assisted drafting</p>
+            <h1>Turn messy lab notes into a structured protocol draft, then review before saving.</h1>
+          </header>
+          <div class="editor-layout">
+            <article class="upload-panel">
+              <h2>Source document</h2>
+              <div class="dropzone">
+                <strong>Drop Word/PDF here</strong>
+                <span>Extract text locally, then send only the selected draft text to the configured parser.</span>
+              </div>
+              <div class="metadata">
+                <label>Title hint<input value="Imaging workflow template" readonly></label>
+                <label>Folder<select><option>Microscopy</option></select></label>
+              </div>
+              <button>Assist format</button>
+            </article>
+            <article class="editor-panel">
+              <div class="panel-head">
+                <div><span class="kicker">Structured Draft</span><h2>Imaging workflow template</h2></div>
+                <span class="tag green">Ready for review</span>
+              </div>
+              <div class="rich-editor">
+                <h3>Overview</h3>
+                <p>Reusable sample preparation, imaging acquisition, and review checklist for team protocols.</p>
+                <h3>Steps</h3>
+                <ul>
+                  <li>Confirm sample identity, date, and imaging objective.</li>
+                  <li>Capture acquisition settings as structured parameters.</li>
+                  <li>Add comments for troubleshooting and downstream analysis.</li>
+                </ul>
+              </div>
+              <div class="toolbar">
+                <span>B</span><span>I</span><span>List</span><span>Table</span><span>Tag</span>
+              </div>
+            </article>
+          </div>
+        </section>
+      </section>
+
+      <section class="shot" id="profile">
+        <aside class="sidebar compact">
+          <div class="brand">
+            <img src="../../frontend/public/brand/prototree-mark.svg" alt="">
+            <div><strong>ProtoTree</strong><span>Profile</span></div>
+          </div>
+          <nav>
+            <a>Overview</a>
+            <a>Data Resources</a>
+            <a class="active">Contribution Profile</a>
+            <a>Starred</a>
+          </nav>
+        </aside>
+        <section class="workspace">
+          <header class="section-title">
+            <p>Contribution Profile</p>
+            <h1>Make protocol work visible: uploads, forks, comments, stars, and reusable resources.</h1>
+          </header>
+          <div class="profile-layout">
+            <article class="profile-card">
+              <span class="avatar large-avatar">AR</span>
+              <h2>Anonymous Researcher</h2>
+              <p>Protocol author and reviewer</p>
+              <div class="score"><strong>86</strong><span>Contribution score</span></div>
+            </article>
+            <article class="metrics-panel">
+              <div class="metric"><strong>18</strong><span>Protocols</span></div>
+              <div class="metric"><strong>31</strong><span>Updates</span></div>
+              <div class="metric"><strong>54</strong><span>Comments</span></div>
+              <div class="metric"><strong>12</strong><span>Forks</span></div>
+              <div class="metric"><strong>47</strong><span>Stars received</span></div>
+              <div class="metric"><strong>9</strong><span>Resources</span></div>
+            </article>
+            <article class="leaderboard">
+              <div class="panel-head">
+                <div><span class="kicker">Leaderboard</span><h2>Recent activity</h2></div>
+                <span class="tag">Demo data</span>
+              </div>
+              <table>
+                <tr><th>Member</th><th>Protocols</th><th>Comments</th><th>Score</th></tr>
+                <tr><td>Anonymous A</td><td>18</td><td>54</td><td>86</td></tr>
+                <tr><td>Anonymous B</td><td>12</td><td>37</td><td>72</td></tr>
+                <tr><td>Anonymous C</td><td>9</td><td>28</td><td>61</td></tr>
+              </table>
+            </article>
+          </div>
+        </section>
+      </section>
+    </main>
+    <script>
+      const selectedShot = new URLSearchParams(window.location.search).get('shot');
+      if (selectedShot) {
+        document.querySelectorAll('.shot').forEach((shot) => {
+          if (shot.id !== selectedShot) {
+            shot.remove();
+          }
+        });
+        document.body.classList.add('single-shot');
+      }
+    </script>
+  </body>
+</html>
