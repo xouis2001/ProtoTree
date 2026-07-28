@@ -18,117 +18,71 @@
 .rich-text-toolbar {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--gap-md);
+  gap: 0;
   align-items: center;
-  padding: var(--gap-xl);
+  padding: 8px 10px;
   border-bottom: 1px solid var(--color-border);
-  background: var(--color-bg-surface);
+  background: #fafafa;
 }
 
-.rich-text-toolbar button,
-.rich-color-picker,
-.rich-font-size-picker,
-.rich-table-picker {
-  border: 1px solid var(--color-border-dashed);
-  border-radius: var(--radius-pill);
-  padding: 8px var(--gap-2xl);
-  color: var(--color-primary-dark);
-  background: var(--color-primary-50);
-  font-weight: var(--font-weight-black);
-}
-
-/* --- Color / font size / table picker inline --- */
-.rich-text-toolbar .rich-color-picker,
-.rich-text-toolbar .rich-font-size-picker,
-.rich-text-toolbar .rich-table-picker,
-.rich-text-toolbar .rich-table-size-control {
+.rich-toolbar-group {
   display: inline-flex;
-  gap: var(--gap-md);
+  gap: 4px;
   align-items: center;
-  width: auto;
-  min-width: 0;
-  white-space: nowrap;
+  min-height: 34px;
+  padding: 0 10px;
+  border-right: 1px solid #d7dbe0;
 }
-
-.rich-text-toolbar .rich-color-picker,
-.rich-text-toolbar .rich-font-size-picker,
-.rich-text-toolbar .rich-table-picker {
-  flex: 0 0 auto;
-  min-height: 38px;
-}
-
-.rich-text-toolbar .rich-table-picker {
-  flex-wrap: nowrap;
-  gap: var(--gap-lg);
-  padding-right: var(--gap-lg);
-}
-
-.rich-text-toolbar .rich-color-picker input {
-  flex: 0 0 auto;
-  width: 28px;
-  height: 24px;
-  padding: 0;
-  border: 0;
-  background: transparent;
-}
-
-.rich-text-toolbar .rich-font-size-picker select {
-  min-width: 72px;
-  height: 30px;
-  border: 0;
-  color: var(--color-text-primary);
-  background: var(--color-bg-card);
-  font: inherit;
-}
-
-.rich-text-toolbar .rich-table-stepper {
-  display: inline-flex;
-  align-items: center;
-  height: 32px;
-  border: 1px solid var(--color-border-dashed);
-  border-radius: var(--radius-pill);
-  background: var(--color-bg-card);
-  overflow: hidden;
-}
-
-.rich-text-toolbar .rich-table-stepper strong {
-  min-width: 28px;
-  color: var(--color-text-primary);
-  text-align: center;
-  font-size: 14px;
-  line-height: 1;
-}
-
-.rich-text-toolbar .rich-stepper-button {
-  display: grid;
-  place-items: center;
-  flex: 0 0 28px;
-  width: 28px;
-  height: 30px;
-  border: 0;
-  border-radius: 0;
-  padding: 0;
-  color: var(--color-primary-dark);
-  background: transparent;
-  font-size: 16px;
-  line-height: 1;
-}
-
-.rich-text-toolbar .rich-stepper-button:hover:not(:disabled) {
-  background: var(--color-primary-100);
-}
-
-.rich-text-toolbar .rich-stepper-button:disabled {
-  color: var(--color-text-light);
-  cursor: not-allowed;
-}
-
+.rich-toolbar-group:first-child { padding-left: 0; }
+.rich-toolbar-group:last-child { border-right: 0; padding-right: 0; }
+.rich-tool-button,
 .rich-text-toolbar .rich-insert-table-button {
-  flex: 0 0 auto;
-  padding: 0;
-  border: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 0 7px;
+  color: #252a32;
   background: transparent;
+  font: inherit;
+  cursor: pointer;
 }
+.rich-tool-button:hover:not(:disabled),
+.rich-text-toolbar .rich-insert-table-button:hover:not(:disabled) { background: #f3f4f6; border-color: #e5e7eb; }
+.rich-tool-button.active,
+.rich-tool-button.active:hover { background: #e5e7eb; border-color: #b8bec7; box-shadow: inset 0 1px 2px #0000000d; }
+.rich-tool-button:disabled,
+.rich-text-toolbar .rich-insert-table-button:disabled { opacity: .48; cursor: not-allowed; }
+.rich-script-icon { font-size: 17px; line-height: 1; }
+.rich-script-icon sup, .rich-script-icon sub { font-size: 10px; }
+.rich-align-icon { flex-direction: column; gap: 3px; }
+.rich-align-icon i { display: block; width: 17px; height: 2px; border-radius: 1px; background: currentColor; }
+.rich-align-icon i:nth-child(2) { width: 12px; }
+.align-left { align-items: flex-start; }
+.align-center { align-items: center; }
+.align-right { align-items: flex-end; }
+.rich-text-toolbar .rich-font-size-picker { display: inline-flex; flex-wrap: nowrap; align-items: center; gap: 6px; white-space: nowrap; }
+.rich-font-size-label { flex: 0 0 auto; }
+.rich-text-toolbar .rich-font-size-picker select {
+  box-sizing: border-box; flex: 0 0 64px; width: 64px; height: 32px; border: 1px solid #cfd4da; border-radius: 4px; padding: 0 22px 0 8px; color: #252a32; background-color: white; font: inherit;
+}
+.rich-color-picker { position: relative; display: inline-flex; width: 32px; height: 32px; align-items: center; justify-content: center; border-radius: 4px; }
+.rich-color-picker:hover { background: #f3f4f6; }
+.rich-color-icon { border-bottom: 3px solid #c43b3b; font-weight: 700; line-height: 19px; }
+.rich-color-picker input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+.rich-text-toolbar .rich-table-picker { gap: 8px; flex-wrap: nowrap; }
+.rich-table-size-control { display: inline-flex; gap: 5px; align-items: center; white-space: nowrap; }
+.rich-table-stepper { display: inline-flex; align-items: center; height: 30px; overflow: hidden; border: 1px solid #cfd4da; border-radius: 4px; background: white; }
+.rich-table-stepper strong { min-width: 24px; color: #252a32; text-align: center; font-size: 13px; line-height: 1; }
+.rich-text-toolbar .rich-stepper-button { display: grid; place-items: center; width: 25px; height: 28px; border: 0; border-radius: 0; padding: 0; color: #252a32; background: transparent; font-size: 16px; line-height: 1; }
+.rich-text-toolbar .rich-stepper-button:hover:not(:disabled) { background: #f3f4f6; }
+.rich-text-toolbar .rich-stepper-button:disabled { color: #b6bbc2; cursor: not-allowed; }
+.rich-text-toolbar .rich-insert-table-button { gap: 6px; white-space: nowrap; }
+.rich-table-grid-icon { display: grid; grid-template-columns: repeat(2, 5px); gap: 1px; }
+.rich-table-grid-icon i { width: 5px; height: 5px; border: 1px solid currentColor; }
 
 /* --- Rich text surface --- */
 .rich-text-surface {
