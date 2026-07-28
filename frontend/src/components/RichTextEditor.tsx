@@ -8,11 +8,14 @@ type RichTextEditorProps = {
   minHeight?: number
 }
 
+const fontSizeOptions = ['12px', '14px', '16px', '18px', '24px', '32px']
+
 export function RichTextEditor({ value, onChange, disabled = false, placeholder = '请输入 Protocol 内容', minHeight = 420 }: RichTextEditorProps) {
   const editorRef = useRef<HTMLDivElement | null>(null)
   const savedRangeRef = useRef<Range | null>(null)
   const [tableRows, setTableRows] = useState(2)
   const [tableColumns, setTableColumns] = useState(2)
+  const [fontSize, setFontSize] = useState('16px')
 
   useEffect(() => {
     const editor = editorRef.current
@@ -104,6 +107,43 @@ export function RichTextEditor({ value, onChange, disabled = false, placeholder 
     insertHtmlAtSelection(`<table><tbody>${table}</tbody></table><p><br></p>`)
   }
 
+  function applyFontSize(nextSize: string) {
+    if (disabled) {
+      return
+    }
+    setFontSize(nextSize)
+    const range = restoreSelection()
+    if (!range) {
+      return
+    }
+    if (range.collapsed) {
+      document.execCommand('fontSize', false, getLegacyFontSize(nextSize))
+      saveSelection()
+      return
+    }
+    const span = document.createElement('span')
+    span.style.fontSize = nextSize
+    span.appendChild(range.extractContents())
+    range.insertNode(span)
+    const nextRange = document.createRange()
+    nextRange.selectNodeContents(span)
+    const selection = window.getSelection()
+    selection?.removeAllRanges()
+    selection?.addRange(nextRange)
+    savedRangeRef.current = nextRange.cloneRange()
+    emitChange()
+  }
+
+  function getLegacyFontSize(size: string) {
+    const numericSize = Number(size.replace('px', ''))
+    if (numericSize <= 12) return '2'
+    if (numericSize <= 16) return '3'
+    if (numericSize <= 18) return '4'
+    if (numericSize <= 24) return '5'
+    if (numericSize <= 32) return '6'
+    return '7'
+  }
+
   function insertHtmlAtSelection(html: string) {
     const range = restoreSelection()
     if (!range) {
@@ -139,6 +179,18 @@ export function RichTextEditor({ value, onChange, disabled = false, placeholder 
         <label className="rich-color-picker">
           字体颜色
           <input type="color" disabled={disabled} onChange={(event) => runCommand('foreColor', event.target.value)} />
+        </label>
+        <label className="rich-font-size-picker">
+          字号
+          <select
+            aria-label="字号"
+            value={fontSize}
+            disabled={disabled}
+            onMouseDown={saveSelection}
+            onChange={(event) => applyFontSize(event.target.value)}
+          >
+            {fontSizeOptions.map((size) => <option key={size} value={size}>{size}</option>)}
+          </select>
         </label>
         <div className="rich-table-picker">
           <div className="rich-table-size-control">

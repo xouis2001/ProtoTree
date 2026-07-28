@@ -27,6 +27,7 @@
 
 .rich-text-toolbar button,
 .rich-color-picker,
+.rich-font-size-picker,
 .rich-table-picker {
   border: 1px solid var(--color-border-dashed);
   border-radius: var(--radius-pill);
@@ -36,8 +37,9 @@
   font-weight: var(--font-weight-black);
 }
 
-/* --- Color / table picker inline --- */
+/* --- Color / font size / table picker inline --- */
 .rich-text-toolbar .rich-color-picker,
+.rich-text-toolbar .rich-font-size-picker,
 .rich-text-toolbar .rich-table-picker,
 .rich-text-toolbar .rich-table-size-control {
   display: inline-flex;
@@ -49,6 +51,7 @@
 }
 
 .rich-text-toolbar .rich-color-picker,
+.rich-text-toolbar .rich-font-size-picker,
 .rich-text-toolbar .rich-table-picker {
   flex: 0 0 auto;
   min-height: 38px;
@@ -67,6 +70,15 @@
   padding: 0;
   border: 0;
   background: transparent;
+}
+
+.rich-text-toolbar .rich-font-size-picker select {
+  min-width: 72px;
+  height: 30px;
+  border: 0;
+  color: var(--color-text-primary);
+  background: var(--color-bg-card);
+  font: inherit;
 }
 
 .rich-text-toolbar .rich-table-stepper {
