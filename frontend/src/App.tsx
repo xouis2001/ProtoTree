@@ -76,18 +76,14 @@ function AppContent() {
   }
 
   async function loadProtocol(id: number) {
-    const detail = await getProtocol(id)
+    const [detail, tree, nextComments] = await Promise.all([
+      getProtocol(id),
+      getProtocolTree(id).catch(() => null),
+      listComments(id).catch(() => []),
+    ])
     setSelected(detail)
-    try {
-      setProtocolTree(await getProtocolTree(id))
-    } catch {
-      setProtocolTree(null)
-    }
-    try {
-      setComments(await listComments(id))
-    } catch {
-      setComments([])
-    }
+    setProtocolTree(tree)
+    setComments(nextComments)
     setProtocolComment('')
     setEditingProtocol(false)
   }
@@ -294,7 +290,6 @@ function AppContent() {
   }
 
   async function openProtocol(id: number) {
-    await handleSelect(id)
     navigate(`/protocols/${id}`)
   }
 
