@@ -16,10 +16,10 @@
   max-height: 100vh;
   background: var(--color-sidebar-bg);
   color: var(--color-text-inverse);
-  padding: 24px;
+  padding: 16px 24px 24px;
   display: flex;
   flex-direction: column;
-  gap: var(--gap-5xl);
+  gap: var(--gap-lg);
   overflow-y: auto;
 }
 
@@ -84,29 +84,36 @@
 
 /* --- User card --- */
 .sidebar-user {
-  display: flex;
-  gap: var(--gap-base);
-  align-items: center;
-  padding: 16px;
+  display: grid;
+  gap: 4px;
+  padding: 6px;
   border: 1px solid var(--color-sidebar-border);
   border-radius: var(--radius-xl);
   background: var(--color-sidebar-surface);
 }
 
-.sidebar-user-info {
-  display: grid;
-  gap: var(--gap-sm);
+.sidebar-user-profile {
+  display: flex;
+  gap: var(--gap-base);
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: background 0.15s ease;
 }
 
-.sidebar-user-info strong {
+.sidebar-user-profile:hover {
+  background: var(--color-sidebar-hover);
+}
+
+.sidebar-user-profile strong {
   color: var(--color-text-inverse);
   font-size: 14px;
 }
 
-.sidebar-user-info span {
-  color: var(--color-sidebar-text-accent);
-  font-size: 12px;
-  font-weight: var(--font-weight-bold);
+.sidebar-user-nav {
+  padding: 0;
+  background: transparent;
 }
 
 /* --- User box (legacy, shared) --- */
@@ -135,7 +142,7 @@
 /* --- Sections --- */
 .sidebar-section {
   display: grid;
-  gap: var(--gap-md);
+  gap: var(--gap-xs);
 }
 
 .sidebar-section-title {
@@ -166,6 +173,7 @@
   font-size: 14px;
   font-weight: var(--font-weight-extrabold);
   text-align: left;
+  text-decoration: none;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -235,7 +243,7 @@
 .lulab-user-name{max-width:132px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px;font-weight:800;color:#1a5c6b;}
 .lulab-logout{border:0;border-radius:999px;padding:7px 12px;background:#eaf6f8;color:#1a5c6b;font-size:13px;font-weight:800;cursor:pointer;transition:all .18s ease;}
 .lulab-logout:hover{background:#1a5c6b;color:#fff;}
-@media(max-width:760px){.lulab-site-nav{align-items:flex-start;flex-direction:column;padding:10px 12px;gap:10px}.lulab-site-nav .nav-links{gap:6px}.lulab-site-nav .nav-links a{font-size:12px;padding:5px 10px}.lulab-auth-area{width:100%;justify-content:flex-end}.lulab-user-name{max-width:110px}}
+@media(max-width:760px){.lulab-site-nav{align-items:flex-start;flex-direction:column;padding:10px 12px;gap:10px}.lulab-site-nav .nav-links{gap:6px}.lulab-site-nav .nav-links a{font-size:12px;padding:5px 10px}.lulab-auth-area{display:none!important}.lulab-user-name{max-width:110px}}
 
 .lulab-profile-link{display:flex;align-items:center;gap:10px;border-radius:999px;text-decoration:none;color:#1a5c6b;padding:0 6px 0 0;transition:all .18s ease;}
 .lulab-profile-link:hover{background:#eaf6f8;transform:translateY(-1px);}

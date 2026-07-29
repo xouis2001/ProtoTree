@@ -95,7 +95,7 @@
   }
 
   .sidebar.mobile-open .sidebar-user {
-    display: flex;
+    display: grid;
   }
 
   .sidebar.mobile-open .sidebar-section {
