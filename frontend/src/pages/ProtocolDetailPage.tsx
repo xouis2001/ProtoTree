@@ -137,6 +137,12 @@ function VersionLineage({ tree, selectedId, onSelect }: { tree: ProtocolTreeNode
   const nodes = flattenTree(tree)
   const selected = nodes.find((node) => node.id === selectedId)
   const lineage = selected ? getLineage(nodes, selected) : nodes.slice(0, 1)
+  const latestDescendant = selected?.children.length
+    ? [...selected.children].sort((left, right) => new Date(right.created_at).getTime() - new Date(left.created_at).getTime())[0]
+    : undefined
+  if (latestDescendant) {
+    lineage.push(latestDescendant)
+  }
 
   return (
     <section className="card lineage-card">
