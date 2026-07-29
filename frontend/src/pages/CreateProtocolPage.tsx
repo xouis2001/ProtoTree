@@ -23,9 +23,7 @@ export function CreateProtocolPage({ onSaveDirectProtocol, taxonomy, onCreateTag
   return (
     <section className="create-layout direct-protocol-page">
       <form className="card direct-protocol-form" onSubmit={(event) => { event.preventDefault(); onSaveDirectProtocol(draft) }}>
-        <p className="eyebrow">新建 Protocol</p>
-        <h2>直接输入和编辑 Protocol</h2>
-        <p className="muted">在下方大文本编辑框中直接编写 Protocol 内容，并通过一级分类、标签组和至少两个 tag 描述实验。</p>
+        <h2>新建 Protocol</h2>
         <div className="direct-protocol-meta-grid">
           <label>
             标题

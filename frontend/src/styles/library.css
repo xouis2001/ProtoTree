@@ -492,6 +492,11 @@
   gap: var(--gap-3xl);
 }
 
+.direct-protocol-form > h2 {
+  margin-bottom: 2px;
+  color: var(--color-primary-dark);
+}
+
 .direct-protocol-meta-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -519,6 +524,21 @@
 .direct-protocol-form textarea {
   min-height: 96px;
   resize: vertical;
+}
+
+.direct-protocol-meta-grid input,
+.direct-protocol-meta-grid textarea,
+.upload-meta-grid input,
+.upload-meta-grid textarea {
+  height: 50px;
+}
+
+.direct-protocol-meta-grid textarea,
+.upload-meta-grid textarea {
+  min-height: 50px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  line-height: 24px;
 }
 
 /* --- Taxonomy filter block --- */
