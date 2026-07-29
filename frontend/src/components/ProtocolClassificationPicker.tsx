@@ -81,7 +81,7 @@ export function ProtocolClassificationPicker({ taxonomy, value, onChange, onCrea
   return (
     <section className="classification-picker">
       <div className="classification-section">
-        <div><p className="eyebrow">实验分类</p><h3>选择一级实验分类</h3></div>
+        <div><h3>选择一级实验分类</h3></div>
         <div className="category-card-grid">
           {taxonomy.map((category) => <button className={value.experiment_category === category.name ? 'category-card active' : 'category-card'} type="button" disabled={disabled} key={category.id} onClick={() => setCategory(category)} style={{ borderColor: value.experiment_category === category.name ? category.color : undefined }}><strong>{category.name}</strong><span>{category.description}</span></button>)}
         </div>
@@ -89,7 +89,7 @@ export function ProtocolClassificationPicker({ taxonomy, value, onChange, onCrea
       {selectedCategory && (
         <>
           <div className="classification-section">
-            <div className="classification-heading"><div><p className="eyebrow">标签组</p><h3>选择实验方向或标签组</h3></div><span className="muted">可多选，也可以新增标签组</span></div>
+            <div className="classification-heading"><div><h3>选择实验方向或标签组</h3></div><span className="muted">可多选，也可以新增标签组</span></div>
             <div className="taxonomy-chip-grid">
               {visibleGroups.map((group) => <button className={value.tag_groups.includes(group.name) ? 'taxonomy-chip active' : 'taxonomy-chip'} type="button" disabled={disabled} key={group.id} onClick={() => toggleGroup(group)}>{group.name}</button>)}
             </div>
@@ -99,7 +99,7 @@ export function ProtocolClassificationPicker({ taxonomy, value, onChange, onCrea
             </div>
           </div>
           <div className="classification-section">
-            <div className="classification-heading"><div><p className="eyebrow">具体标签</p><h3>至少选择两个 tag</h3></div><span className={value.tags.length >= 2 ? 'tag-count ok' : 'tag-count'}>已选 {value.tags.length} 个</span></div>
+            <div className="classification-heading"><div><h3>具体标签（至少2个）</h3></div><span className={value.tags.length >= 2 ? 'tag-count ok' : 'tag-count'}>已选 {value.tags.length} 个</span></div>
             <div className="taxonomy-chip-grid tag-grid">
               {visibleTags.map((tag) => <button className={value.tags.includes(tag.name) ? 'taxonomy-chip active' : 'taxonomy-chip'} type="button" disabled={disabled} key={`${tag.tag_group_id}-${tag.id}`} onClick={() => toggleTag(tag)}>{tag.name}</button>)}
             </div>

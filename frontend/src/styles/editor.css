@@ -170,6 +170,10 @@
   gap: var(--gap-lg);
 }
 
+.classification-section h3 {
+  margin-bottom: 0;
+}
+
 .classification-heading {
   display: flex;
   gap: var(--gap-lg);
