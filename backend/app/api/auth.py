@@ -33,9 +33,18 @@ router = APIRouter(prefix="/auth", tags=["auth"])
 
 @router.post("/register", response_model=RegisterResult, status_code=status.HTTP_201_CREATED)
 async def register(payload: UserCreate, request: Request, session: AsyncSession = Depends(get_session)):
-    existing = await session.execute(select(User).where(User.email == payload.email.lower()))
-    if existing.scalar_one_or_none() is not None:
-        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Email already registered")
+    email = payload.email.lower()
+    existing = await session.execute(select(User).where(User.email == email).with_for_update())
+    existing_user = existing.scalar_one_or_none()
+    if existing_user is not None:
+        if existing_user.is_active or existing_user.approval_status != "approved":
+            raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Email already registered")
+        # Keep the deactivated identity and all user_id-linked history, but release
+        # its email address so a new account can register and seek approval.
+        archived_at = datetime.now(UTC).strftime("%Y%m%d%H%M%S%f")
+        existing_user.email = f"deactivated-{existing_user.id}-{archived_at}@example.com"
+        session.add(existing_user)
+        await session.flush()
 
     # First-ever user remains the bootstrap admin. All later registrations wait
     # for administrator approval before they can sign in.

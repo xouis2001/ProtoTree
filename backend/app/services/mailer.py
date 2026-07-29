@@ -32,7 +32,14 @@ def send_templated_email(to_email: str, template: str, payload: dict[str, Any]) 
     name = escape(str(payload.get("name", "申请人")))
     email = escape(str(payload.get("email", "")))
     if template == "registration_submitted_admin":
-        url = escape(settings.admin_approval_url, quote=True)
+        user_id = payload.get("user_id")
+        separator = "&" if "?" in settings.admin_approval_url else "?"
+        approval_url = (
+            f"{settings.admin_approval_url}{separator}approval_user_id={user_id}"
+            if isinstance(user_id, int) and not isinstance(user_id, bool) and user_id > 0
+            else settings.admin_approval_url
+        )
+        url = escape(approval_url, quote=True)
         _send_html(
             to_email,
             "Lu Lab：新的注册申请待审批",

@@ -35,7 +35,7 @@ class Settings(BaseSettings):
 
     # Transactional email links and durable outbox worker.
     admin_approval_url: str = "https://lulab.top/user-admin.html"
-    login_url: str = "https://lulab.top/login"
+    login_url: str = "https://lulab.top/login.html"
     email_outbox_poll_seconds: float = 5.0
     email_outbox_lease_seconds: int = 120
     email_outbox_max_attempts: int = 8
