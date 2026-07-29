@@ -66,11 +66,14 @@ export function AppLayout({ user, message }: { user: User; message: string }) {
           </button>
         </div>
         <div className="sidebar-user">
-          <Avatar value={user.avatar} config={user.avatar_config} size="medium" label={user.name} />
-          <div className="sidebar-user-info">
+          <NavLink to="/profile" className="sidebar-user-profile">
+            <Avatar value={user.avatar} config={user.avatar_config} size="medium" label={user.name} />
             <strong>{user.name}</strong>
-            <span>Contribution Profile</span>
-          </div>
+          </NavLink>
+          <nav className="side-nav sidebar-user-nav">
+            <NavLink to="/my-library"><Icon name="folder" size={16} /> 我的 Protocol</NavLink>
+            <NavLink to="/starred-protocols"><Icon name="star" size={16} /> 我的收藏</NavLink>
+          </nav>
         </div>
         <div className="sidebar-section">
           <p className="sidebar-section-title">浏览</p>
@@ -94,14 +97,6 @@ export function AppLayout({ user, message }: { user: User; message: string }) {
           <nav className="side-nav">
             <NavLink to="/resources/data-processing"><Icon name="chart" size={16} /> 数据处理</NavLink>
             <NavLink to="/resources/agent-skills"><Icon name="sparkles" size={16} /> Agent Skill</NavLink>
-          </nav>
-        </div>
-        <div className="sidebar-section">
-          <p className="sidebar-section-title">个人</p>
-          <nav className="side-nav">
-            <NavLink to="/profile"><Icon name="user" size={16} /> 个人中心</NavLink>
-            <NavLink to="/my-library"><Icon name="folder" size={16} /> 我的 Protocol</NavLink>
-            <NavLink to="/starred-protocols"><Icon name="star" size={16} /> 我的收藏</NavLink>
           </nav>
         </div>
       </aside>
