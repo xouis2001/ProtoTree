@@ -24,6 +24,11 @@ class UserRead(BaseModel):
     avatar_config: dict | None = None
     is_admin: bool
     is_active: bool = True
+    approval_status: str = "approved"
+    approved_at: datetime | None = None
+    approved_by_id: int | None = None
+    onboarding_completed: bool = True
+    submitted_at: datetime | None = None
     contribution_score: int
     projects: list[str] = Field(default_factory=list)
     last_login: datetime | None = None
@@ -65,6 +70,7 @@ class ResetPasswordRequest(BaseModel):
 class AdminUserUpdate(BaseModel):
     is_admin: bool | None = None
     is_active: bool | None = None
+    approval_status: str | None = None
 
 
 class AuditLogRead(BaseModel):
@@ -84,3 +90,10 @@ class Token(BaseModel):
     access_token: str
     token_type: str = "bearer"
     user: UserRead
+
+
+class RegisterResult(BaseModel):
+    message: str
+    requires_approval: bool = True
+    user: UserRead
+    onboarding_token: str | None = None

@@ -17,10 +17,10 @@ class Settings(BaseSettings):
     remember_token_expire_minutes: int = 60 * 24 * 30  # remember-me 30 days
     sliding_renew_threshold_minutes: int = 60 * 24 * 3  # renew if remaining < 3 days
 
-    ai_provider: str = "custom"
+    ai_provider: str = "deepseek"
     ai_api_key: str = Field(default="", validation_alias=AliasChoices("AI_API_KEY", "OPENAI_API_KEY", "ai_api_key", "openai_api_key"))
-    ai_base_url: str = Field(default="", validation_alias=AliasChoices("AI_BASE_URL", "OPENAI_BASE_URL", "ai_base_url", "openai_base_url"))
-    ai_model: str = Field(default="", validation_alias=AliasChoices("AI_MODEL", "OPENAI_MODEL", "ai_model", "openai_model"))
+    ai_base_url: str = Field(default="https://api.deepseek.com", validation_alias=AliasChoices("AI_BASE_URL", "OPENAI_BASE_URL", "ai_base_url", "openai_base_url"))
+    ai_model: str = Field(default="deepseek-chat", validation_alias=AliasChoices("AI_MODEL", "OPENAI_MODEL", "ai_model", "openai_model"))
 
     cors_origins: str = "http://localhost:5173,http://127.0.0.1:5173"
     storage_dir: str = str(ROOT_DIR / "storage")
@@ -32,6 +32,15 @@ class Settings(BaseSettings):
     smtp_password: str = ""
     smtp_from_name: str = "Lu Lab"
     reset_link_base: str = "https://lulab.top/reset-password"
+
+    # Transactional email links and durable outbox worker.
+    admin_approval_url: str = "https://lulab.top/user-admin.html"
+    login_url: str = "https://lulab.top/login"
+    email_outbox_poll_seconds: float = 5.0
+    email_outbox_lease_seconds: int = 120
+    email_outbox_max_attempts: int = 8
+    email_outbox_base_backoff_seconds: int = 30
+    email_outbox_max_backoff_seconds: int = 3600
 
 
 settings = Settings()

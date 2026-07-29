@@ -1,4 +1,5 @@
 from app.models.comment import Comment
+from app.models.email_outbox import EmailOutbox
 from app.models.contribution import ContributionEvent
 from app.models.folder import ProtocolFolder
 from app.models.pitfall import Pitfall
@@ -15,6 +16,7 @@ __all__ = [
     "CommercialProtocolResource",
     "CommercialProtocolStar",
     "ContributionEvent",
+    "EmailOutbox",
     "ImageMacroResource",
     "Pitfall",
     "Protocol",

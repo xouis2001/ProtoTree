@@ -6,13 +6,15 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.config import settings
-from app.core.deps import get_current_user
-from app.core.security import create_access_token, get_password_hash, verify_password
+from app.core.deps import get_current_user, get_onboarding_user
+from app.core.security import create_access_token, create_onboarding_token, get_password_hash, verify_password
 from app.db.session import get_session
+from app.models.email_outbox import EmailOutbox
 from app.models.user import User
 from app.schemas.user import (
     AvatarConfigUpdate,
     ForgotPasswordRequest,
+    RegisterResult,
     ResetPasswordRequest,
     Token,
     UserCreate,
@@ -29,15 +31,17 @@ from app.services.mailer import send_reset_email
 router = APIRouter(prefix="/auth", tags=["auth"])
 
 
-@router.post("/register", response_model=Token, status_code=status.HTTP_201_CREATED)
+@router.post("/register", response_model=RegisterResult, status_code=status.HTTP_201_CREATED)
 async def register(payload: UserCreate, request: Request, session: AsyncSession = Depends(get_session)):
     existing = await session.execute(select(User).where(User.email == payload.email.lower()))
     if existing.scalar_one_or_none() is not None:
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Email already registered")
 
-    # First-ever user becomes admin bootstrap; open registration otherwise.
+    # First-ever user remains the bootstrap admin. All later registrations wait
+    # for administrator approval before they can sign in.
     first = await session.execute(select(User.id).limit(1))
     is_first = first.scalar_one_or_none() is None
+    now = datetime.now(UTC)
 
     user = User(
         name=payload.name,
@@ -46,16 +50,83 @@ async def register(payload: UserCreate, request: Request, session: AsyncSession 
         avatar="",
         avatar_config=payload.avatar_config,
         is_admin=is_first,
-        is_active=True,
+        is_active=is_first,
+        approval_status="approved" if is_first else "pending",
+        approved_at=now if is_first else None,
+        onboarding_completed=is_first,
+        submitted_at=now if is_first else None,
     )
     session.add(user)
     await session.commit()
     await session.refresh(user)
 
-    await log_action(session, "user.register", user_id=user.id, actor_email=user.email, request=request)
+    await log_action(
+        session, "user.register", user_id=user.id, actor_email=user.email,
+        detail={"approval_status": user.approval_status}, request=request,
+    )
 
-    access_token = create_access_token(str(user.id))
-    return Token(access_token=access_token, user=UserRead.model_validate(user))
+    if is_first:
+        return RegisterResult(message="Registration complete.", requires_approval=False, user=UserRead.model_validate(user))
+    onboarding_token = create_onboarding_token(str(user.id))
+    return RegisterResult(
+        message="Registration started. Create an avatar to submit your application.",
+        user=UserRead.model_validate(user), onboarding_token=onboarding_token,
+    )
+
+
+@router.post("/onboarding/resume", response_model=RegisterResult)
+async def resume_onboarding(payload: UserLogin, session: AsyncSession = Depends(get_session)):
+    result = await session.execute(select(User).where(User.email == payload.email.lower()))
+    user = result.scalar_one_or_none()
+    if user is None or not verify_password(payload.password, user.password_hash):
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid email or password")
+    if user.onboarding_completed:
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Onboarding already completed")
+    return RegisterResult(
+        message="Continue creating your avatar.", user=UserRead.model_validate(user),
+        onboarding_token=create_onboarding_token(str(user.id)),
+    )
+
+
+@router.put("/onboarding/avatar-and-submit", response_model=UserRead)
+async def submit_onboarding_avatar(
+    payload: AvatarConfigUpdate, request: Request,
+    session: AsyncSession = Depends(get_session),
+    token_user: User = Depends(get_onboarding_user),
+):
+    # Serialize submissions for this user. A repeated request returns the same
+    # completed resource without writing duplicate audit or outbox rows.
+    result = await session.execute(
+        select(User).where(User.id == token_user.id).with_for_update()
+    )
+    user = result.scalar_one()
+    if user.onboarding_completed:
+        return user
+
+    user.avatar_config = payload.avatar_config
+    user.onboarding_completed = True
+    user.submitted_at = datetime.now(UTC)
+    session.add(user)
+
+    admins = await session.execute(
+        select(User.email).where(User.is_admin.is_(True), User.is_active.is_(True))
+    )
+    event_key = f"registration_submitted:{user.id}"
+    for recipient in admins.scalars().all():
+        session.add(EmailOutbox(
+            event_key=event_key,
+            recipient=recipient,
+            template="registration_submitted_admin",
+            payload={"user_id": user.id, "name": user.name, "email": user.email},
+        ))
+
+    await log_action(
+        session, "user.submit_registration", user_id=user.id, actor_email=user.email,
+        target=user.email, detail={"approval_status": user.approval_status}, request=request, commit=False,
+    )
+    await session.commit()
+    await session.refresh(user)
+    return user
 
 
 @router.post("/login", response_model=Token)
@@ -64,6 +135,13 @@ async def login(payload: UserLogin, request: Request, session: AsyncSession = De
     user = result.scalar_one_or_none()
     if user is None or not verify_password(payload.password, user.password_hash):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid email or password")
+    approval_status = getattr(user, "approval_status", "approved")
+    if approval_status == "pending":
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Account is pending administrator approval")
+    if approval_status == "rejected":
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Account registration was rejected")
+    if approval_status != "approved":
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Account is not approved")
     if not user.is_active:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Account is disabled")
 
@@ -154,7 +232,7 @@ async def forgot_password(payload: ForgotPasswordRequest, request: Request, sess
     result = await session.execute(select(User).where(User.email == email))
     user = result.scalar_one_or_none()
     # Always return 202 to avoid email enumeration.
-    if user is not None and user.is_active:
+    if user is not None and user.is_active and getattr(user, "approval_status", "approved") == "approved":
         token = secrets.token_urlsafe(32)
         user.reset_token = token
         user.reset_token_expires = datetime.now(UTC) + timedelta(minutes=30)

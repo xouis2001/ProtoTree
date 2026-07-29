@@ -16,11 +16,19 @@ def get_password_hash(password: str) -> str:
     return pwd_context.hash(password)
 
 
+def _create_typed_token(subject: str, token_type: str, expires_minutes: int) -> str:
+    expire = datetime.now(UTC) + timedelta(minutes=expires_minutes)
+    payload = {"sub": str(subject), "typ": token_type, "exp": expire}
+    return jwt.encode(payload, settings.jwt_secret, algorithm=settings.jwt_algorithm)
+
+
 def create_access_token(subject: str, expires_minutes: int | None = None) -> str:
     minutes = expires_minutes if expires_minutes is not None else settings.access_token_expire_minutes
-    expire = datetime.now(UTC) + timedelta(minutes=minutes)
-    payload = {"sub": subject, "exp": expire}
-    return jwt.encode(payload, settings.jwt_secret, algorithm=settings.jwt_algorithm)
+    return _create_typed_token(subject, "access", minutes)
+
+
+def create_onboarding_token(subject: str, expires_minutes: int = 15) -> str:
+    return _create_typed_token(subject, "onboarding", expires_minutes)
 
 
 def decode_access_token(token: str) -> str | None:
